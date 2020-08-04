@@ -1,0 +1,43 @@
+@import '~@styles/utils/Mixins';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__img {
+    @include size(60);
+    margin: 5px 0 0 5px;
+  }
+
+  &__menu {
+    cursor: pointer;
+    &--profile {
+      img {
+        @include size(60);
+        margin-right: 5px;
+      }
+      p {
+        margin: 0;
+        padding-left: 5px;
+      }
+    }
+  
+    &:hover {
+      ul,
+      ul:hover {
+        display: block;
+        position: absolute;
+      }
+    }
+
+    ul {
+      text-align: left;
+      display: none;
+      li {
+        margin: 10px 0;
+
+      }
+    }
+  }
+}
