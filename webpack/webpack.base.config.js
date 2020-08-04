@@ -18,6 +18,7 @@ module.exports = (env) => {
       alias: {
         '@src': srcPath,
         '@styles': resolve(publicPath, 'styles'),
+        '@assets': resolve(publicPath, 'assets'),
         '@components': resolve(appPath, 'components'),
       },
     },
