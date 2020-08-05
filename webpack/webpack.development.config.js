@@ -6,21 +6,24 @@ module.exports = (env) => ({
   ...merge(baseConfig(env), {
     mode: 'development',
     module: {
-      rules: [{
-        test: /\.s?css$/,
-      loader: ['style-loader', 'css-loader', 'sass-loader']
-      }],
+      rules: [
+        {
+          test: /\.s?css$/,
+          loader: ['style-loader', 'css-loader', 'sass-loader'],
+        },
+      ],
     },
     devServer: {
       contentBase: resolve(__dirname, '..', 'dist'),
       host: '0.0.0.0',
-      open: true,
+      open: false,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        'Access-Control-Allow-Methods':
+          'GET, POST, PUT, DELETE, PATCH, OPTIONS',
         'Access-Control-Allow-Headers':
           'X-Requested-With, content-type, Authorization',
-      }
-    }
-  })
+      },
+    },
+  }),
 });
