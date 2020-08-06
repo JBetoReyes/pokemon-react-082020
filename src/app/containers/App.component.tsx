@@ -1,8 +1,6 @@
 import React from 'react';
-import Header from '@components/Header.component';
+import Header from '@components/layout/Header.component';
 
-const App = () => (
-  <Header />
-);
+const App = (): JSX.Element => <Header />;
 
 export default App;
