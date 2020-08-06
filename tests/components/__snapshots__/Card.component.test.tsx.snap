@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardComponent Should show the CardComponent 1`] = `
+<div
+  className="card-item"
+>
+  <img
+    alt="pokemonimage"
+    className="card-item__img"
+    src=""
+  />
+  <div
+    className="card-item__details"
+  >
+    <p
+      className="card-item__details--title"
+    >
+      title
+    </p>
+    <p
+      className="card-item__details--sub-title"
+    >
+      subTitle
+    </p>
+  </div>
+</div>
+`;
