@@ -1,8 +1,16 @@
+@import '~@styles/utils/Mixins';
+
 .search-bar {
   &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   &__input {
@@ -12,5 +20,6 @@
     outline: none;
     padding: 0 20px;
     margin: 0 0 20px 0;
+    font-size: 16px;
   }
 }
