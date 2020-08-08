@@ -1,10 +1,13 @@
+@import './Typography';
+
 body {
   margin: 0px;
   padding: 0px;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: content-box;
+  font-family: $theme-font;
 }
 
 ul {
