@@ -1,12 +1,27 @@
 const HtmlPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
+const webpack = require('webpack');
+const { existsSync } = require('fs');
 const { resolve } = require('path');
+const dotenv = require('dotenv');
+
 // eslint-disable-next-line no-unused-vars
-module.exports = (_env) => {
+module.exports = (env) => {
+  const rootPath = resolve(__dirname, '..');
   const srcPath = resolve(__dirname, '..', 'src');
   const appPath = resolve(srcPath, 'app');
   const publicPath = resolve(srcPath, 'public');
+  const baseEnvPath = resolve(rootPath, '.env');
+  const envPath = `${baseEnvPath}.${env.ENVIRONMENT}`;
+  const finalPath = existsSync(envPath) ? envPath : baseEnvPath;
+  const envObject = dotenv.config({ path: finalPath }).parsed;
+  const envKeys = Object.keys(envObject).reduce(
+    (keys, nextKey) => ({
+      ...keys,
+      [`process.env.${nextKey}`]: JSON.stringify(envObject[nextKey]),
+    }),
+    {}
+  );
   return {
     entry: resolve(srcPath, 'app', 'index.tsx'),
     output: {
@@ -23,6 +38,7 @@ module.exports = (_env) => {
       },
     },
     plugins: [
+      new webpack.DefinePlugin(envKeys),
       new HtmlPlugin({
         template: resolve(publicPath, 'index.html'),
         filename: 'index.html',
