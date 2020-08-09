@@ -2,21 +2,62 @@
 @import '~@styles/utils/variables';
 
 .card-item {
+  // $ns = .card-item
+  $ns: &;
   background-color: $accent-color;
   border: 2px solid black;
   border-radius: 20px;
   cursor: pointer;
+  transition: 450ms all;
   display: inline-block;
   margin-right: 10px;
   @include size(200, 200);
-  
+  padding: 25px 0;
+  position: relative;
+
+  &:hover ~ & {
+    -webkit-transform: translate3d(50px, 0, 0);
+    transform: translate3d(50px, 0, 0);
+  } 
+
   &__img {
     @include size(200, 200);
     object-fit: contain;
   }
 
   &__details {
+    align-items: flex-start;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    border-radius: 18px;
+    bottom: 0;
+    color: white;
+    display: flex;
+    font-size: 10px;
+    flex-direction: column;
+    justify-content: flex-end;
+    left: 0;
     opacity: 0;
+    padding: 10px;
     position: absolute;
+    right: 0;
+    transition: 450ms opacity;
+    top: 0;
+  }
+
+  &:hover {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    #{$ns}__details {
+      opacity: 1;
+    }
+  }
+}
+
+.carousel__container {
+  &:hover .card-item {
+    opacity: 0.3;
+    &:hover {
+      opacity: 1;
+    }
   }
 }

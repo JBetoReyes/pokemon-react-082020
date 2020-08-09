@@ -25,8 +25,10 @@ export default (): JSX.Element => {
       {pokemons.map(({ name, number }) => (
         <Card
           key={`${number}-${name}`}
-          title={name}
-          subTitle={`${number}`}
+          detail={name}
+          detailLabel="Name"
+          subDetail={`${number}`}
+          subDetailLabel="Pokemon Number"
           url={`${pokemonImagesUrl}/${number}.png`}
         />
       ))}
