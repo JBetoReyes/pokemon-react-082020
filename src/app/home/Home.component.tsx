@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import SearchBar from '@components/common/SearchBar.component';
 import Carousel from '@components/common/Carousel.component';
 import Card from '@components/common/Card.component';
+import useFetchPokemons from './Home.hooks';
 
 export interface IPokemonAPI {
   results: IPokemonAM[];
@@ -17,41 +18,24 @@ export interface IPokemon extends IPokemonAM {
 }
 
 export default (): JSX.Element => {
-  const [pokemons, setPokemons] = useState<IPokemon[]>([]);
   const pokemonImagesUrl = process.env.POKEMON_IMAGES_URL;
-  const getPokemons = async () => {
-    const api = process.env.POKEMON_API;
-    const resp = await fetch(api as string);
-    const { results } = (await resp.json()) as IPokemonAPI;
-    const pokemonsMap = results.map<IPokemon>((pokemon: IPokemonAM) => {
-      const numberRegex = /^.*\/(\d\d?\d?\d?)\/?$/;
-      let number: number | string = 36;
-      if (numberRegex.test(pokemon.url)) {
-        [, number] = pokemon.url.match(numberRegex) as RegExpMatchArray;
-      }
-      return {
-        ...pokemon,
-        number: +number,
-      };
-    });
-    setPokemons(pokemonsMap);
-  };
-  useEffect(() => {
-    getPokemons();
-  }, []);
+  const { state, data: pokemons } = useFetchPokemons();
+  const carousel = (
+    <Carousel>
+      {pokemons.map(({ name, number }) => (
+        <Card
+          key={`${number}-${name}`}
+          title={name}
+          subTitle={`${number}`}
+          url={`${pokemonImagesUrl}/${number}.png`}
+        />
+      ))}
+    </Carousel>
+  );
   return (
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
-      <Carousel>
-        {pokemons.map(({ name, number }) => (
-          <Card
-            key={`${number}-${name}`}
-            title={name}
-            subTitle={`${number}`}
-            url={`${pokemonImagesUrl}/${number}.png`}
-          />
-        ))}
-      </Carousel>
+      {state === 'loading' ? 'loading' : carousel}
     </section>
   );
 };

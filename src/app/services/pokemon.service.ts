@@ -1,4 +1,4 @@
-const PokemonService = async (): Promise<IPokemonApp[]> => {
+export const fetchPokemons = async (): Promise<IPokemonApp[]> => {
   const apiUrl = process.env.POKEMON_API;
   const rawResponse = await fetch(apiUrl as string);
   const { results } = (await rawResponse.json()) as IPokemonResponse;
@@ -17,8 +17,6 @@ const PokemonService = async (): Promise<IPokemonApp[]> => {
   );
   return pokemons;
 };
-
-export default PokemonService;
 
 export interface IPokemonResponse {
   results: IPokemonAM[];
