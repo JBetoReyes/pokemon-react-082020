@@ -4,7 +4,6 @@ import './_SearchBar.component.scss';
 
 export type OwnProps = {
   title: string;
-  setPokemons: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 type Props = {
@@ -13,7 +12,7 @@ type Props = {
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 type SubmitEvent = React.FormEvent<HTMLFormElement>;
 
-const SearchBar = ({ title, setPokemons }: OwnProps): JSX.Element => {
+const SearchBar = ({ title }: OwnProps): JSX.Element => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleSearchInput = (event: ChangeEvent) => {
@@ -24,9 +23,6 @@ const SearchBar = ({ title, setPokemons }: OwnProps): JSX.Element => {
 
   const handelSubmit = (event: SubmitEvent) => {
     event.preventDefault();
-    setPokemons((pokemons: string[]) => {
-      return [...pokemons, searchValue];
-    });
     setSearchValue('');
   };
 
@@ -46,7 +42,7 @@ const SearchBar = ({ title, setPokemons }: OwnProps): JSX.Element => {
 };
 
 SearchBar.propTypes = {
-  setPokemons: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default SearchBar;

@@ -1,0 +1,9 @@
+@import '~@styles/utils/_Mixins.scss';
+
+.card-item {
+  display: inline-block;
+  &__img {
+    @include size(250, 250);
+    object-fit: cover;
+  }
+}
