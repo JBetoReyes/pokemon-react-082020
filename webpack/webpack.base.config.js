@@ -35,6 +35,7 @@ module.exports = (env) => {
         '@styles': resolve(publicPath, 'styles'),
         '@assets': resolve(publicPath, 'assets'),
         '@components': resolve(appPath, 'components'),
+        '@services': resolve(appPath, 'services'),
       },
     },
     plugins: [
