@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 // eslint-disable-next-line no-unused-vars
 module.exports = (env) => {
   const rootPath = resolve(__dirname, '..');
-  const srcPath = resolve(__dirname, '..', 'src');
+  const srcPath = resolve(rootPath, 'src');
   const appPath = resolve(srcPath, 'app');
   const publicPath = resolve(srcPath, 'public');
   const baseEnvPath = resolve(rootPath, '.env');
