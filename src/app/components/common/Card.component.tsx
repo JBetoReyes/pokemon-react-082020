@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import './_Card.component.scss';
+import { upperFirst } from 'lodash';
 
 export type OwnProps = {
   detail: string;
@@ -24,8 +25,12 @@ const Card = ({
     <div className="card-item">
       <img src={`${url}`} alt="pokemonimage" className="card-item__img" />
       <div className="card-item__details">
-        <p className="card-item__details--title">{`${detailLabel}: ${detail}`}</p>
-        <p className="card-item__details--sub-title">{`${subDetailLabel}: ${subDetail}`}</p>
+        <p className="card-item__details--title">
+          {`${upperFirst(detailLabel)}: ${upperFirst(detail)}`}
+        </p>
+        <p className="card-item__details--sub-title">
+          {`${upperFirst(subDetailLabel)}: ${upperFirst(subDetail)}`}
+        </p>
       </div>
     </div>
   );
