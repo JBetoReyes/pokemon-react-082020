@@ -7,7 +7,7 @@ exports[`CardComponent Should show the CardComponent 1`] = `
   <img
     alt="pokemonimage"
     className="card-item__img"
-    src=""
+    src="url"
   />
   <div
     className="card-item__details"
@@ -15,12 +15,12 @@ exports[`CardComponent Should show the CardComponent 1`] = `
     <p
       className="card-item__details--title"
     >
-      title
+      Label: Title
     </p>
     <p
       className="card-item__details--sub-title"
     >
-      subTitle
+      SubLabel: SubTitle
     </p>
   </div>
 </div>

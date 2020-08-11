@@ -3,9 +3,25 @@ import { shallow } from 'enzyme';
 import Card from '@components/common/Card.component';
 
 describe('CardComponent', () => {
-  let card = shallow(<Card title="title" subTitle="subTitle" />);
+  let card = shallow(
+    <Card
+      detail="title"
+      detailLabel="label"
+      subDetail="subTitle"
+      subDetailLabel="subLabel"
+      url="url"
+    />
+  );
   beforeEach(() => {
-    card = shallow(<Card title="title" subTitle="subTitle" />);
+    card = shallow(
+      <Card
+        detail="title"
+        detailLabel="label"
+        subDetail="subTitle"
+        subDetailLabel="subLabel"
+        url="url"
+      />
+    );
   });
 
   test('Should show the CardComponent', () => {

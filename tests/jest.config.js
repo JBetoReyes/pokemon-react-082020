@@ -13,5 +13,6 @@ module.exports = {
   // Alias
   moduleNameMapper: {
     '^@components/(.*)$': '<rootDir>/../src/app/components/$1',
+    '\\.(s?css)$': '<rootDir>/__mocks__/styleMock.js',
   },
 };

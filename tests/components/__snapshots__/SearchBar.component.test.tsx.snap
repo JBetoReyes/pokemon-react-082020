@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBarComponent Should show the SearchBarComponent 1`] = `
+<div
+  className="search-bar__container"
+>
+  <h2
+    className="search-bar__title"
+  >
+    title
+  </h2>
+  <form
+    className="search-bar__form"
+    onSubmit={[Function]}
+  >
+    <input
+      className="search-bar__input"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </form>
+</div>
+`;
