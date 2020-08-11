@@ -13,6 +13,7 @@
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^26.0.9",
+    "@types/lodash": "^4.14.159",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
@@ -45,6 +46,7 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
+    "lodash": "^4.17.19",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
