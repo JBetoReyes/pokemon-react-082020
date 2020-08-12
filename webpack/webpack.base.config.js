@@ -34,6 +34,7 @@ module.exports = (env) => {
         '@src': srcPath,
         '@styles': resolve(publicPath, 'styles'),
         '@assets': resolve(publicPath, 'assets'),
+        '@app': appPath,
         '@components': resolve(appPath, 'components'),
         '@services': resolve(appPath, 'services'),
       },
