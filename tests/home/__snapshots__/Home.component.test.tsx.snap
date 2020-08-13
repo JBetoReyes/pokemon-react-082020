@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Component Should render the home component 1`] = `
+<section>
+  <SearchBar
+    title="Which is your favorite pokemon?"
+  />
+  loading
+</section>
+`;
+
+exports[`Home Component Should render the home component with cards 1`] = `
+<section>
+  <SearchBar
+    title="Which is your favorite pokemon?"
+  />
+  <Carousel>
+    <Card
+      detail="pikachu"
+      detailLabel="Name"
+      key="36-pikachu"
+      subDetail="36"
+      subDetailLabel="Pokemon Number"
+      url="https://pokeres.bastionbot.org/images/pokemon/36.png"
+    />
+    <Card
+      detail="charmander"
+      detailLabel="Name"
+      key="37-charmander"
+      subDetail="37"
+      subDetailLabel="Pokemon Number"
+      url="https://pokeres.bastionbot.org/images/pokemon/37.png"
+    />
+  </Carousel>
+</section>
+`;
