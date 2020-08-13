@@ -10,10 +10,14 @@ module.exports = {
   snapshotSerializers: ['enzyme-to-json/serializer'],
   setupFilesAfterEnv: ['<rootDir>/setupEnzyme.ts'],
 
+  // Setup env variables
+  setupFiles: ['<rootDir>/setEnvVars.ts'],
+
   // Alias
   moduleNameMapper: {
     '^@components/(.*)$': '<rootDir>/../src/app/components/$1',
     '^@app/(.*)$': '<rootDir>/../src/app/$1',
+    '^@services/(.*)$': '<rootDir>/../src/app/services/$1',
     '\\.(s?css)$': '<rootDir>/__mocks__/styleMock.js',
   },
 };

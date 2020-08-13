@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.3",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^26.0.9",
     "@types/lodash": "^4.14.159",

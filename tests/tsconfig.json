@@ -8,7 +8,9 @@
         "esModuleInterop": true,
         "baseUrl": "./",
         "paths": {
-            "@components/*": ["../src/app/components/*"]
+            "@components/*": ["../src/app/components/*"],
+            "@app/*": ["../src/app/*"],
+            "@services/*": ["../src/app/services/*"]
         }
     },
     "include": [
