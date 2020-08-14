@@ -2,7 +2,8 @@ export const fetchPokemons = async (page = 1): Promise<IPokemonApp[]> => {
   const pokemonResponse = localStorage.getItem('pokemonResponse');
   let results: IPokemonAM[] = [];
   let next = '';
-  if (pokemonResponse) {
+  // eslint-disable-next-line no-constant-condition
+  if (process.env.USE_LOCAL_STORAGE === 'true' && pokemonResponse) {
     const storedResponse = JSON.parse(pokemonResponse) as IPokemonResponse;
     results = [...results, ...storedResponse.results];
     next = storedResponse.next as string;
