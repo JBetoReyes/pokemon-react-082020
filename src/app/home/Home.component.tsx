@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from '@components/common/SearchBar.component';
 import Carousel from '@components/common/Carousel.component';
 import Card from '@components/common/Card.component';
+import CounterButtons from '@components/hooks/counterHook.component';
 import useFetchPokemons from './Home.hooks';
 
 export interface IPokemonAPI {
@@ -38,6 +39,7 @@ export default (): JSX.Element => {
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
       {state === 'loading' ? 'loading' : carousel}
+      <CounterButtons />
     </section>
   );
 };
