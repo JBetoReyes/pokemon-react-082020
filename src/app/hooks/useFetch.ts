@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export interface IFetchState<T> {
   loading: boolean;
@@ -13,21 +13,24 @@ const defaultState = <T>(): IFetchState<T> => ({
 
 const useFetch = <T>(url: string): IFetchState<T> => {
   const [state, setState] = useState<IFetchState<T>>(defaultState<T>());
-  fetch(url)
-    .then((response) => response.json())
-    .then((data: T) =>
-      setState({
-        loading: true,
-        data,
-      })
-    )
-    .catch((e) => {
-      setState({
-        loading: false,
-        data: state.data,
-        error: e,
+  useEffect(() => {
+    setState(defaultState<T>());
+    fetch(url)
+      .then((response) => response.json())
+      .then((data: T) =>
+        setState({
+          loading: true,
+          data,
+        })
+      )
+      .catch((e) => {
+        setState({
+          loading: false,
+          data: state.data,
+          error: e,
+        });
       });
-    });
+  }, [url]);
   return state;
 };
 
