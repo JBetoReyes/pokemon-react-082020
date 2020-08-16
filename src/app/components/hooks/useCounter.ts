@@ -12,11 +12,11 @@ type CounterHook = {
   decrement: _MouseEventHandler<HTMLButtonElement>;
   reset: _MouseEventHandler<HTMLButtonElement>;
 };
-const useCounter = (): CounterHook => {
+const useCounter = (defaultValue = 0): CounterHook => {
   const [state, setCounter] = useState({
-    counter1: 0,
-    counter2: 0,
-    counter3: 0,
+    counter1: defaultValue,
+    counter2: defaultValue,
+    counter3: defaultValue,
   });
   const { counter1 } = state;
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
