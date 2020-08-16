@@ -1,1 +1,1 @@
-export type FormData = Record<string, string | number>;
+export type AppFormData = Record<string, string | number>;
