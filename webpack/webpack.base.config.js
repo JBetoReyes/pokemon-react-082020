@@ -37,6 +37,7 @@ module.exports = (env) => {
         '@app': appPath,
         '@components': resolve(appPath, 'components'),
         '@services': resolve(appPath, 'services'),
+        '@hooks': resolve(appPath, 'hooks'),
       },
     },
     plugins: [
