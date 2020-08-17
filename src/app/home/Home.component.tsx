@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchBar from '@components/common/SearchBar.component';
 import Carousel from '@components/common/Carousel.component';
 import Card from '@components/common/Card.component';
@@ -6,6 +6,7 @@ import CounterButtons from '@components/hooks/counterHook.component';
 import Form from '@components/hooks/ExampleForm.component';
 import FormWithCustomHook from '@components/hooks/FormWithCutomHook.component';
 import BreakingBadQuotes from '@components/hooks/FetchExample.component';
+import { AppClickEvent } from '@typings/htmlEvents';
 import useFetchPokemons from './Home.hooks';
 
 export interface IPokemonAPI {
@@ -24,6 +25,11 @@ export interface IPokemon extends IPokemonAM {
 export default (): JSX.Element => {
   const pokemonImagesUrl = process.env.POKEMON_IMAGES_URL;
   const { state, data: pokemons } = useFetchPokemons();
+  const [shouldShowHide, setShouldHide] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleShouldHide = (e: AppClickEvent) => {
+    setShouldHide(!shouldShowHide);
+  };
   const carousel = (
     <Carousel>
       {pokemons.map(({ name, number }) => (
@@ -48,7 +54,10 @@ export default (): JSX.Element => {
       <hr />
       <p>Form With Custom hook</p>
       <FormWithCustomHook />
-      <BreakingBadQuotes />
+      {!shouldShowHide ? <BreakingBadQuotes /> : 'hiding things'}
+      <button type="button" onClick={handleShouldHide}>
+        Hide/Show
+      </button>
     </section>
   );
 };

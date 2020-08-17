@@ -25,8 +25,7 @@ const FetchExample = (): JSX.Element => {
   );
   return (
     <>
-      <h1>Breaking bad quotes</h1>
-      {loading ? 'loading' : quoteComponent}
+      {!loading ? quoteComponent : 'loading...'}
       <button type="button" onClick={increment}>
         Next
       </button>
