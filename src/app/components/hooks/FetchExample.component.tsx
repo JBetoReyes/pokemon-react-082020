@@ -4,16 +4,23 @@ import useCounter from './useCounter';
 
 const FetchExample = (): JSX.Element => {
   const baseUrl = process.env.BREAKING_BAD_API;
-  const { state: counterState, increment, decrement } = useCounter(1);
+  const { state: counterState, increment, decrement } = useCounter(1, 1);
   const { counter1 } = counterState;
-  const { data, loading } = useFetch<IBreakingBadQuote>(
+  const { data, loading } = useFetch<IBreakingBadQuote[]>(
     `${baseUrl}quotes/${counter1}`
   );
-  const { quote_id: quoteId, quote, author } = data;
+  let quoteData: IBreakingBadQuote = {
+    quote_id: 0,
+    quote: '',
+    author: '',
+  };
+  if (!!data && data.length > 0) {
+    [quoteData] = data as IBreakingBadQuote[];
+  }
   const quoteComponent = (
     <div className="">
-      <h2 key={quoteId}>{quote}</h2>
-      <h3>{author}</h3>
+      <h2 key={quoteData.quote_id}>{quoteData.quote}</h2>
+      <h3>{quoteData.author}</h3>
     </div>
   );
   return (

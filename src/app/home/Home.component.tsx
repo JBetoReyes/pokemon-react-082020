@@ -4,7 +4,8 @@ import Carousel from '@components/common/Carousel.component';
 import Card from '@components/common/Card.component';
 import CounterButtons from '@components/hooks/counterHook.component';
 import Form from '@components/hooks/ExampleForm.component';
-import FormWithCutomHook from '@components/hooks/FormWithCutomHook.component';
+import FormWithCustomHook from '@components/hooks/FormWithCutomHook.component';
+import BreakingBadQuotes from '@components/hooks/FetchExample.component';
 import useFetchPokemons from './Home.hooks';
 
 export interface IPokemonAPI {
@@ -46,7 +47,8 @@ export default (): JSX.Element => {
       <Form />
       <hr />
       <p>Form With Custom hook</p>
-      <FormWithCutomHook />
+      <FormWithCustomHook />
+      <BreakingBadQuotes />
     </section>
   );
 };
