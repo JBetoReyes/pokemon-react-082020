@@ -12,7 +12,8 @@ type CounterHook = {
   decrement: _MouseEventHandler<HTMLButtonElement>;
   reset: _MouseEventHandler<HTMLButtonElement>;
 };
-const useCounter = (defaultValue = 0): CounterHook => {
+
+const useCounter = (defaultValue = 0, minValue = 0): CounterHook => {
   const [state, setCounter] = useState({
     counter1: defaultValue,
     counter2: defaultValue,
@@ -29,7 +30,7 @@ const useCounter = (defaultValue = 0): CounterHook => {
   const decrement: _MouseEventHandler<HTMLButtonElement> = () => {
     setCounter({
       ...state,
-      counter1: counter1 !== 0 ? counter1 - 1 : 0,
+      counter1: counter1 > minValue ? counter1 - 1 : minValue,
     });
   };
   const reset: _MouseEventHandler<HTMLButtonElement> = () => {
