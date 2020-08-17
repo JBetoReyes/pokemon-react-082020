@@ -7,7 +7,7 @@ export interface IFetchState<T> {
 }
 
 const defaultState = <T>(): IFetchState<T> => ({
-  loading: false,
+  loading: true,
   data: null,
 });
 
@@ -19,7 +19,7 @@ const useFetch = <T>(url: string): IFetchState<T> => {
       .then((response) => response.json())
       .then((data: T) =>
         setState({
-          loading: true,
+          loading: false,
           data,
         })
       )
