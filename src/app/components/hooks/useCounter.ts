@@ -8,9 +8,9 @@ type CounterState = {
 
 type CounterHook = {
   state: CounterState;
-  increment: _MouseEventHandler<HTMLButtonElement>;
-  decrement: _MouseEventHandler<HTMLButtonElement>;
-  reset: _MouseEventHandler<HTMLButtonElement>;
+  increment: _MouseEventHandler<HTMLElement>;
+  decrement: _MouseEventHandler<HTMLElement>;
+  reset: _MouseEventHandler<HTMLElement>;
 };
 
 const useCounter = (defaultValue = 0, minValue = 0): CounterHook => {

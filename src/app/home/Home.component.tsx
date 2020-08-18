@@ -6,6 +6,7 @@ import CounterButtons from '@components/hooks/counterHook.component';
 import Form from '@components/hooks/ExampleForm.component';
 import FormWithCustomHook from '@components/hooks/FormWithCutomHook.component';
 import BreakingBadQuotes from '@components/hooks/FetchExample.component';
+import MemoComponent from '@components/hooks/Memo.component';
 import { AppClickEvent } from '@typings/htmlEvents';
 import useFetchPokemons from './Home.hooks';
 
@@ -58,6 +59,8 @@ export default (): JSX.Element => {
       <button type="button" onClick={handleShouldHide}>
         Hide/Show
       </button>
+      <hr />
+      <MemoComponent />
     </section>
   );
 };
