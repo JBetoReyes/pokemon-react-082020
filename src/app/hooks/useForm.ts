@@ -6,6 +6,7 @@ export type HookData<T extends AppFormData> = {
   formData: T;
   handleChange: (e: AppChangeEvent) => void;
   handleSubmit: (e: AppSubmitEvent) => void;
+  reset: () => void;
 };
 
 const useForm = <T extends AppFormData>(initialState: T): HookData<T> => {
@@ -19,10 +20,14 @@ const useForm = <T extends AppFormData>(initialState: T): HookData<T> => {
   const handleSubmit = (e: AppSubmitEvent) => {
     e.preventDefault();
   };
+  const reset = () => {
+    setFormData(initialState);
+  };
   return {
     formData,
     handleChange,
     handleSubmit,
+    reset,
   };
 };
 
