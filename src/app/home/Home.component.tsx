@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchBar from '@components/common/SearchBar.component';
 import Carousel from '@components/common/Carousel.component';
+import TodoComponent from '@components/hooks/TODO/Todo.component';
 import Card from '@components/common/Card.component';
 import CounterButtons from '@components/hooks/counterHook.component';
 import Form from '@components/hooks/ExampleForm.component';
@@ -61,6 +62,7 @@ export default (): JSX.Element => {
       </button>
       <hr />
       <MemoComponent />
+      <TodoComponent />
     </section>
   );
 };
