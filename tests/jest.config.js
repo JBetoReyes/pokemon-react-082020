@@ -18,6 +18,7 @@ module.exports = {
     '^@components/(.*)$': '<rootDir>/../src/app/components/$1',
     '^@app/(.*)$': '<rootDir>/../src/app/$1',
     '^@services/(.*)$': '<rootDir>/../src/app/services/$1',
+    '^@typings/(.*)$': '<rootDir>/../src/typings/$1',
     '\\.(s?css)$': '<rootDir>/__mocks__/styleMock.js',
   },
 };

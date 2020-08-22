@@ -1,20 +1,18 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target":"ES2018",
-        "jsx": "react",
-        "resolveJsonModule": true,
-        "outDir": "./dist",
-        "esModuleInterop": true,
-        "baseUrl": "./",
-        "paths": {
-            "@components/*": ["../src/app/components/*"],
-            "@app/*": ["../src/app/*"],
-            "@services/*": ["../src/app/services/*"]
-        }
-    },
-    "include": [
-        "./**/*",
-    ],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2018",
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["../src/app/components/*"],
+      "@app/*": ["../src/app/*"],
+      "@services/*": ["../src/app/services/*"],
+      "@typings/*": ["../src/typings/*"]
+    }
+  },
+  "include": ["./**/*"]
 }
-  
