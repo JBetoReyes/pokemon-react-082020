@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AppChangeEvent, AppSubmitEvent } from 'src/typings/htmlEvents';
+import { AppChangeEvent, AppSubmitEvent } from '@typings/htmlEvents';
 import { AppFormData } from '@typings/hooks';
 
 export type HookData<T extends AppFormData> = {
