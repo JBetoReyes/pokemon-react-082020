@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HookComponent The component snapshot should match 1`] = `
+<Fragment>
+  <div
+    className=""
+  >
+    <h1>
+      hello
+    </h1>
+  </div>
+</Fragment>
+`;

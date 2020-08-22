@@ -23,10 +23,10 @@ describe('Home Component', () => {
     home = shallow(homeJsx);
     useFetchPokemonsMocked.mockClear();
   });
-  test('Should render the home component', () => {
+  test.skip('Should render the home component', () => {
     expect(home).toMatchSnapshot();
   });
-  test('Should render the home component with cards', () => {
+  test.skip('Should render the home component with cards', () => {
     const mockStateWithPokemons: IFetchState<IPokemonApp[]> = {
       state: 'success',
       data: [
