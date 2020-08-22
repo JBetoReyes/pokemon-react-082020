@@ -17,6 +17,7 @@ module.exports = (env) => ({
       contentBase: resolve(__dirname, '..', 'dist'),
       host: '0.0.0.0',
       open: false,
+      historyApiFallback: true,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods':
