@@ -79,7 +79,7 @@ const TodoComponent = (): JSX.Element => {
               />
               <button
                 type="submit"
-                className="mt-1 btn btn-outline-primary btn-block"
+                className="mt-1 btn btn-outline-primary btn-block submit-button"
               >
                 Add
               </button>
