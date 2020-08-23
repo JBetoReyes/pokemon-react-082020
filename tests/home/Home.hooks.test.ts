@@ -1,27 +1,27 @@
 import useFetchPokemons from '@app/home/Home.hooks';
 import { renderHook } from '@testing-library/react-hooks';
-import { IPokemonResponse } from '@services/pokemon.service';
 
 describe('Home hooks', () => {
   beforeEach(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    global.fetch = async (_input: RequestInfo) => {
-      const mockResponse = {
-        json: async (): Promise<IPokemonResponse> => {
-          return {
-            next: '',
-            previous: '',
-            results: [
-              {
-                name: 'pikachu',
-                url: '/36/',
-              },
-            ],
-          };
-        },
-      } as Response;
-      return mockResponse;
-    };
+    const mockFetch = fetch as typeof fetchMock;
+    mockFetch.resetMocks();
+    mockFetch.mockResponse(
+      JSON.stringify({
+        next: '',
+        previous: '',
+        results: [
+          {
+            name: 'pikachu',
+            url: '/36/',
+          },
+        ],
+      })
+    );
+  });
+
+  afterAll(() => {
+    const mockFetch = fetch as typeof fetchMock;
+    mockFetch.resetMocks();
   });
 
   test('Should return the default state', async () => {
