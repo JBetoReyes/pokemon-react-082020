@@ -11,7 +11,8 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setupEnzyme.ts'],
 
   // Setup env variables
-  setupFiles: ['<rootDir>/setEnvVars.ts'],
+  // Setup mock fetch
+  setupFiles: ['<rootDir>/setEnvVars.ts', '<rootDir>/setMockFetch.ts'],
 
   // Alias
   moduleNameMapper: {
