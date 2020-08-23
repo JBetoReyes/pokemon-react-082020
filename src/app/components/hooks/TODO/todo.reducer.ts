@@ -7,7 +7,7 @@ const todoReducer = (state: ITodo[], action: IAction<ITodo>): ITodo[] => {
     case 'Delete':
       return state.filter((todo) => todo.key !== action.payload.key);
     default:
-      return [];
+      return [...state];
   }
 };
 
