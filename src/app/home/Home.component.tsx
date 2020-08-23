@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React from 'react';
+import TodoApp from '@components/hooks/Todo2/TodoApp.component';
 // import SearchBar from '@components/common/SearchBar.component';
-import Carousel from '@components/common/Carousel.component';
+// import Carousel from '@components/common/Carousel.component';
 // import TodoComponent from '@components/hooks/TODO/TodoList.component';
-import Card from '@components/common/Card.component';
+// import Card from '@components/common/Card.component';
 // import CounterButtons from '@components/hooks/counterHook.component';
 // import Form from '@components/hooks/ExampleForm.component';
 // import FormWithCustomHook from '@components/hooks/FormWithCutomHook.component';
 // import BreakingBadQuotes from '@components/hooks/FetchExample.component';
 // import MemoComponent from '@components/hooks/Memo.component';
-import { AppClickEvent } from '@typings/htmlEvents';
-import MainApp from '@components/hooks/useContext/MainApp.component';
-import useFetchPokemons from './Home.hooks';
+// import { AppClickEvent } from '@typings/htmlEvents';
+// import MainApp from '@components/hooks/useContext/MainApp.component';
+// import useFetchPokemons from './Home.hooks';
 
 export interface IPokemonAPI {
   results: IPokemonAM[];
@@ -26,27 +28,27 @@ export interface IPokemon extends IPokemonAM {
 }
 
 export default (): JSX.Element => {
-  const pokemonImagesUrl = process.env.POKEMON_IMAGES_URL;
-  const { state, data: pokemons } = useFetchPokemons();
-  const [shouldShowHide, setShouldHide] = useState(false);
+  // const pokemonImagesUrl = process.env.POKEMON_IMAGES_URL;
+  // const { state, data: pokemons } = useFetchPokemons();
+  // const [shouldShowHide, setShouldHide] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleShouldHide = (e: AppClickEvent) => {
-    setShouldHide(!shouldShowHide);
-  };
-  const carousel = (
-    <Carousel>
-      {pokemons.map(({ name, number }) => (
-        <Card
-          key={`${number}-${name}`}
-          detail={name}
-          detailLabel="Name"
-          subDetail={`${number}`}
-          subDetailLabel="Pokemon Number"
-          url={`${pokemonImagesUrl}/${number}.png`}
-        />
-      ))}
-    </Carousel>
-  );
+  // const handleShouldHide = (e: AppClickEvent) => {
+  //   setShouldHide(!shouldShowHide);
+  // };
+  // const carousel = (
+  //   <Carousel>
+  //     {pokemons.map(({ name, number }) => (
+  //       <Card
+  //         key={`${number}-${name}`}
+  //         detail={name}
+  //         detailLabel="Name"
+  //         subDetail={`${number}`}
+  //         subDetailLabel="Pokemon Number"
+  //         url={`${pokemonImagesUrl}/${number}.png`}
+  //       />
+  //     ))}
+  //   </Carousel>
+  // );
   return (
     <section>
       {/* <SearchBar title="Which is your favorite pokemon?" />
@@ -64,7 +66,8 @@ export default (): JSX.Element => {
       <hr />
       <MemoComponent />
       <TodoComponent /> */}
-      <MainApp />
+      {/* <MainApp /> */}
+      <TodoApp />
     </section>
   );
 };
