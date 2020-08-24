@@ -36,7 +36,7 @@ exports[`Todo Should match with the snapshot 1`] = `
             value=""
           />
           <button
-            className="mt-1 btn btn-outline-primary btn-block"
+            className="mt-1 btn btn-outline-primary btn-block submit-button"
             type="submit"
           >
             Add
