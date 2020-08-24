@@ -1,0 +1,11 @@
+.list-group-item {
+  display: flex;
+  align-items: center;
+  p {
+    min-width: 200px;
+    cursor: pointer;
+    &.todo-item--completed {
+      text-decoration: line-through;
+    }
+  }
+}
