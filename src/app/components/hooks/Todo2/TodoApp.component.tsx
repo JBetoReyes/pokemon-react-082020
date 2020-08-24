@@ -26,7 +26,7 @@ const TodoApp = (): JSX.Element => {
   };
   return (
     <>
-      <h1>Todo App</h1>
+      <h1 className="m-3">{`Todo App (${todos.length})`}</h1>
       <hr />
       <div className="container">
         <div className="row">

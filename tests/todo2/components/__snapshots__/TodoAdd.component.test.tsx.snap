@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoAdd Should match the snapshot 1`] = `
+<Fragment>
+  <h2>
+    Add Todo
+  </h2>
+  <hr />
+  <form
+    className="form-group"
+    onSubmit={[Function]}
+  >
+    <input
+      className="form-control"
+      name="description"
+      onChange={[Function]}
+      placeholder="Enter a TODO"
+      type="text"
+      value=""
+    />
+    <button
+      className="btn btn-outline-primary btn-block mt-3"
+      type="submit"
+    >
+      Add
+    </button>
+  </form>
+</Fragment>
+`;
