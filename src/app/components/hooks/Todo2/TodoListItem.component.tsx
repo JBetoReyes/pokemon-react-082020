@@ -31,7 +31,7 @@ const TodoListItem = ({
       <li className="list-group-item">
         <p
           onClick={toggleTodo}
-          className={`m-5 ${done && 'todo-item--completed'}`}
+          className={`m-5 ${done ? 'todo-item--completed' : ''}`}
         >
           {`${index + 1}. ${description}`}
         </p>
