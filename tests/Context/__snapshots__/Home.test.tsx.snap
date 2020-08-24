@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent Should match snapshot 1`] = `
+<Home>
+  <h1>
+    Home component
+  </h1>
+  <hr />
+  {
+    "name": "test name",
+    "email": "test@gmail.com"
+}
+</Home>
+`;

@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 import React from 'react';
-import TodoApp from '@components/hooks/Todo2/TodoApp.component';
+// import TodoApp from '@components/hooks/Todo2/TodoApp.component';
 // import SearchBar from '@components/common/SearchBar.component';
 // import Carousel from '@components/common/Carousel.component';
 // import TodoComponent from '@components/hooks/TODO/TodoList.component';
@@ -11,7 +11,7 @@ import TodoApp from '@components/hooks/Todo2/TodoApp.component';
 // import BreakingBadQuotes from '@components/hooks/FetchExample.component';
 // import MemoComponent from '@components/hooks/Memo.component';
 // import { AppClickEvent } from '@typings/htmlEvents';
-// import MainApp from '@components/hooks/useContext/MainApp.component';
+import MainApp from '@components/hooks/useContext/MainApp.component';
 // import useFetchPokemons from './Home.hooks';
 
 export interface IPokemonAPI {
@@ -66,8 +66,8 @@ export default (): JSX.Element => {
       <hr />
       <MemoComponent />
       <TodoComponent /> */}
-      {/* <MainApp /> */}
-      <TodoApp />
+      <MainApp />
+      {/* <TodoApp /> */}
     </section>
   );
 };
