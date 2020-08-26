@@ -14,7 +14,7 @@ module.exports = (env) => ({
       ],
     },
     devServer: {
-      contentBase: resolve(__dirname, '..', 'dist'),
+      contentBase: resolve(__dirname, '..', 'src', 'public', 'assets'),
       host: '0.0.0.0',
       open: false,
       historyApiFallback: true,
