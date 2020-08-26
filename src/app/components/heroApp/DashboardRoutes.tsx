@@ -13,7 +13,7 @@ const DasboardRoutes = (): JSX.Element => {
         <Switch>
           <Route path="/marvel" component={MarvelScreen} />
           <Route path="/dc" component={DCScreen} />
-          <Route path="/hero/:id" component={HeroScreen} />
+          <Route path="/hero/:heroId" component={HeroScreen} />
           <Redirect from="/" to="/marvel" />
         </Switch>
       </div>
