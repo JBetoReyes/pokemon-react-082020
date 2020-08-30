@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import MarvelScreen from './marvel/MarvelScreen';
 import DCScreen from './dc/DCScreen';
 import HeroScreen from './heroes/HeroScreen';
+import SearchScreen from './Search/SearchScreen';
 
 const DasboardRoutes = (): JSX.Element => {
   return (
@@ -13,6 +14,7 @@ const DasboardRoutes = (): JSX.Element => {
         <Switch>
           <Route path="/marvel" component={MarvelScreen} />
           <Route path="/dc" component={DCScreen} />
+          <Route path="/search" component={SearchScreen} />
           <Route path="/hero/:heroId" component={HeroScreen} />
           <Redirect from="/" to="/marvel" />
         </Switch>
