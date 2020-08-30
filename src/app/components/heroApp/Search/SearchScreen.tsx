@@ -14,7 +14,7 @@ const SearchScreen = ({ history }: Props): JSX.Element => {
   const { q = '' } = parse(search);
   const { formData, handleChange } = useForm({ query: `${q}` });
   const { query } = formData;
-  const heroesFiltered = getHeroeByName(q as string);
+  const heroesFiltered = useMemo(() => getHeroeByName(q as string), [q]);
   const handleSearchChange = (e: AppChangeEvent) => {
     setSearchState(false);
     handleChange(e);
