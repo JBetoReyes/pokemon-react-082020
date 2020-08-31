@@ -1,5 +1,5 @@
 // import React, { useState } from 'react';
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import AppRouter from '@components/heroApp/AppRouter';
 import AppContext from '@components/heroApp/app.context';
 import authReducer from '@components/heroApp/auth/auth.reducer';
@@ -31,9 +31,11 @@ export interface IPokemon extends IPokemonAM {
   number: number;
 }
 const initializer = (): IAppUser => {
-  return {
+  const rawUser = localStorage.getItem('user');
+  const defaultUser: IAppUser = {
     logged: false,
   };
+  return rawUser ? JSON.parse(rawUser) : defaultUser;
 };
 
 export default (): JSX.Element => {
@@ -63,6 +65,10 @@ export default (): JSX.Element => {
     { logged: false },
     initializer
   );
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
+
   return (
     <section>
       {/* <SearchBar title="Which is your favorite pokemon?" />

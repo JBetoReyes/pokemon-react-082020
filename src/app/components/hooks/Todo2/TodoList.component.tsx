@@ -1,5 +1,5 @@
 import React from 'react';
-import { ITodoApp } from './todo.model';
+import { ITodoApp } from './Todo.model';
 import TodoListItem from './TodoListItem.component';
 
 export type OwnPropsType = {

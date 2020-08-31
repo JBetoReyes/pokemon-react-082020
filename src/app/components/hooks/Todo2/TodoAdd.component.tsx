@@ -2,7 +2,7 @@ import React from 'react';
 import useForm from '@hooks/useForm';
 import { AppSubmitEvent } from '@typings/htmlEvents';
 import { upperFirst } from 'lodash';
-import { ITodoForm, ITodoApp } from './todo.model';
+import { ITodoForm, ITodoApp } from './Todo.model';
 
 export type OwnPropsType = {
   handleAdd: (todo: ITodoApp) => void;

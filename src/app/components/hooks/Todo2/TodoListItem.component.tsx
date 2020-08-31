@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import { AppClickEvent } from '@typings/htmlEvents';
-import { ITodoApp } from './todo.model';
+import { ITodoApp } from './Todo.model';
 import './todo.scss';
 
 export type OwnPropsType = {

@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import TodoList from './TodoList.component';
 import TodoAdd from './TodoAdd.component';
-import { ITodoApp } from './todo.model';
+import { ITodoApp } from './Todo.model';
 import { addTodo, deleteTodo, completeTodo } from './todo.actions';
 import todoReducer from './todo.reducer';
 

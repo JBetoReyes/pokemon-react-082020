@@ -1,5 +1,5 @@
 /* eslint-disable default-case */
-import { ITodoApp } from './todo.model';
+import { ITodoApp } from './Todo.model';
 import {
   TodoActionTypes,
   ADD_TODO,
