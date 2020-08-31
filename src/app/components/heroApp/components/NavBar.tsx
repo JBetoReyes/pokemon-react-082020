@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import AppContext, { IAppContext } from '../app.context';
 
 export default (): JSX.Element => {
+  const { user } = useContext(AppContext) as IAppContext;
+  const { name } = user;
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
       <Link className="navbar-brand" to="/">
@@ -40,6 +43,7 @@ export default (): JSX.Element => {
 
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul className="navbar-nav ml-auto">
+          <span className="nav-item nav-link text-info">{name}</span>
           <NavLink
             activeClassName="active"
             className="nav-item nav-link"

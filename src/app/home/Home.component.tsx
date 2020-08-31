@@ -1,6 +1,9 @@
 // import React, { useState } from 'react';
-import React from 'react';
+import React, { useReducer } from 'react';
 import AppRouter from '@components/heroApp/AppRouter';
+import AppContext from '@components/heroApp/app.context';
+import authReducer from '@components/heroApp/auth/auth.reducer';
+import { IAppUser } from '@components/heroApp/auth/auth.model';
 // import TodoApp from '@components/hooks/Todo2/TodoApp.component';
 // import SearchBar from '@components/common/SearchBar.component';
 // import Carousel from '@components/common/Carousel.component';
@@ -27,6 +30,11 @@ export interface IPokemonAM {
 export interface IPokemon extends IPokemonAM {
   number: number;
 }
+const initializer = (): IAppUser => {
+  return {
+    logged: false,
+  };
+};
 
 export default (): JSX.Element => {
   // const pokemonImagesUrl = process.env.POKEMON_IMAGES_URL;
@@ -50,6 +58,11 @@ export default (): JSX.Element => {
   //     ))}
   //   </Carousel>
   // );
+  const [user, setUser] = useReducer<typeof authReducer, IAppUser>(
+    authReducer,
+    { logged: false },
+    initializer
+  );
   return (
     <section>
       {/* <SearchBar title="Which is your favorite pokemon?" />
@@ -69,7 +82,9 @@ export default (): JSX.Element => {
       <TodoComponent /> */}
       {/* <MainApp /> */}
       {/* <TodoApp /> */}
-      <AppRouter />
+      <AppContext.Provider value={{ user, setUser }}>
+        <AppRouter />
+      </AppContext.Provider>
     </section>
   );
 };

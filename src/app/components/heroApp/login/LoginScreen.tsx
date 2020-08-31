@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { AppClickEvent } from '@typings/htmlEvents';
+import AppContext, { IAppContext } from '../app.context';
+import { logIn } from '../auth/auth.actions';
 
 type Props = RouteComponentProps;
 
 const LoginScreen = ({ history }: Props): JSX.Element => {
+  const { user, setUser } = useContext(AppContext) as IAppContext;
   const btnWrapper = {
     width: '200px',
   };
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleClick = (e: AppClickEvent) => {
-    history.replace('/marvel');
+    setUser(
+      logIn({
+        name: 'Beto',
+        email: 'beto@emial.com',
+        id: '1',
+        logged: user.logged,
+      })
+    );
+    history.push('/dc');
   };
   return (
     <>
