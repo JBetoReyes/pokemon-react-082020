@@ -16,7 +16,7 @@ export const authReducer = (
         logged: false,
       };
     default:
-      return state;
+      return { ...state };
   }
 };
 
