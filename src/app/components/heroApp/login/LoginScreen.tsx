@@ -13,6 +13,7 @@ const LoginScreen = ({ history }: Props): JSX.Element => {
   };
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleClick = (e: AppClickEvent) => {
+    const lastPath = localStorage.getItem('lastPath') || '/dc';
     setUser(
       logIn({
         name: 'Beto',
@@ -21,7 +22,7 @@ const LoginScreen = ({ history }: Props): JSX.Element => {
         logged: user.logged,
       })
     );
-    history.push('/dc');
+    history.push(lastPath);
   };
   return (
     <>
