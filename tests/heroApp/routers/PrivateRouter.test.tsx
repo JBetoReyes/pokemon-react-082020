@@ -9,7 +9,7 @@ describe('PrivateRouter', () => {
       pathname: '/marvel',
     },
   };
-  beforeAll(() => {
+  beforeEach(() => {
     Storage.prototype.setItem = jest.fn();
   });
   afterAll(() => {
@@ -26,6 +26,19 @@ describe('PrivateRouter', () => {
       </MemoryRouter>
     );
     expect(wrapper.find('span').exists()).toBe(true);
+    expect(localStorage.setItem).toHaveBeenCalledWith('lastPath', '/marvel');
+  });
+  test('Should block the component from being rendered', () => {
+    const wrapper = mount(
+      <MemoryRouter>
+        <PrivateRoute
+          {...(props as RouteProps)}
+          isAuthenticated={false}
+          component={() => <span>test</span>}
+        />
+      </MemoryRouter>
+    );
+    expect(wrapper.find('span').exists()).toBe(false);
     expect(localStorage.setItem).toHaveBeenCalledWith('lastPath', '/marvel');
   });
 });
