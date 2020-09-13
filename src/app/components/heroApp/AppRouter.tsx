@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import LoginScreen from '@components/heroApp/login/LoginScreen';
 import DasboardRoutes from './DashboardRoutes';
-import { PrivateRoute } from './routers/PrivateRoute';
+import PrivateRoute from './routers/PrivateRoute';
 import AppContext from './app.context';
 import { IAppContext } from './app.model';
 import PublicRoute from './routers/PublicRoute';

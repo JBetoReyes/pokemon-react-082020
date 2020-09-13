@@ -13,7 +13,7 @@ export type OwnProps = {
 
 export type Props = OwnProps & RouteProps;
 
-export const PrivateRoute = ({
+export default ({
   isAuthenticated,
   component: Component,
   ...rest
