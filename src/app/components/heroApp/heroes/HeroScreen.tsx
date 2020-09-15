@@ -5,7 +5,7 @@ import { AppClickEvent } from '@typings/htmlEvents';
 import getHeroesById from '../services/getHeroesById';
 import { IHero } from '../data/heroes';
 
-type Props = RouteComponentProps;
+type Props = Pick<RouteComponentProps, 'history'>;
 
 const HeroScreen = ({ history }: Props): JSX.Element => {
   const { heroId } = useParams<{ heroId: string }>();
