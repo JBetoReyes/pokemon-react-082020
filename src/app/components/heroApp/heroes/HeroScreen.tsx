@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import React, { useMemo } from 'react';
-import { useParams, Redirect, RouteComponentProps } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { AppClickEvent } from '@typings/htmlEvents';
+import { History } from 'history';
 import getHeroesById from '../services/getHeroesById';
 import { IHero } from '../data/heroes';
 
-type Props = Pick<RouteComponentProps, 'history'>;
+type Props = {
+  history: History;
+};
 
 const HeroScreen = ({ history }: Props): JSX.Element => {
   const { heroId } = useParams<{ heroId: string }>();

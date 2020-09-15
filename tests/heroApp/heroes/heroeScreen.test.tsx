@@ -16,7 +16,7 @@ describe('heroe screen tests', () => {
         <HeroScreen history={mockHistory as any} />
       </MemoryRouter>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('Redirect')).toMatchSnapshot();
     expect(wrapper.find('Redirect').exists()).toBe(true);
   });
   test('Should render the heroe data', () => {
@@ -25,7 +25,6 @@ describe('heroe screen tests', () => {
         <Route path="/hero/:heroId" component={HeroScreen} />
       </MemoryRouter>
     );
-    expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.row').exists()).toBe(true);
   });
   test('Should push the root path if the history length is less or equal two', () => {

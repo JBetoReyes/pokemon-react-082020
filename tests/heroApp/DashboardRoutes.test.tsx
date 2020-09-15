@@ -21,6 +21,6 @@ describe('<DashboarRoutes> tests', () => {
         </MemoryRouter>
       </AppContext.Provider>
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('HeroList')).toMatchSnapshot();
   });
 });

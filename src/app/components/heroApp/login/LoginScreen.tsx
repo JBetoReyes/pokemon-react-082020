@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 import { AppClickEvent } from '@typings/htmlEvents';
+import { History } from 'history';
 import AppContext, { IAppContext } from '../app.context';
 import { logIn } from '../auth/auth.actions';
 
-type Props = RouteComponentProps;
+type Props = {
+  history: History;
+};
 
 const LoginScreen = ({ history }: Props): JSX.Element => {
   const { user, setUser } = useContext(AppContext) as IAppContext;

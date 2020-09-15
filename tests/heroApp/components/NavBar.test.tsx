@@ -55,7 +55,7 @@ describe('Navbar component tests', () => {
   });
 
   test('Should match with the snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find('nav.navbar')).toMatchSnapshot();
   });
   test('Should clean the user and navigates to the login page when loging out', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
