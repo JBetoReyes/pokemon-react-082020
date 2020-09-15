@@ -12,7 +12,7 @@ exports[`Navbar component tests Should match with the snapshot 1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "d5cvda",
+            "key": "qkgl3v",
             "pathname": "/",
             "search": "",
             "state": undefined,
@@ -26,7 +26,7 @@ exports[`Navbar component tests Should match with the snapshot 1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "d5cvda",
+          "key": "qkgl3v",
           "pathname": "/",
           "search": "",
           "state": undefined,

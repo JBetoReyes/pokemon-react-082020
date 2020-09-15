@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<DashboarRoutes> tests  1`] = `
+exports[`<DashboarRoutes> tests Should match with the snapshot 1`] = `
 <MemoryRouter>
   <Router
     history={
@@ -12,7 +12,7 @@ exports[`<DashboarRoutes> tests  1`] = `
         "entries": Array [
           Object {
             "hash": "",
-            "key": "yblduz",
+            "key": "8joc5j",
             "pathname": "/marvel",
             "search": "",
             "state": undefined,
@@ -26,7 +26,7 @@ exports[`<DashboarRoutes> tests  1`] = `
         "listen": [Function],
         "location": Object {
           "hash": "",
-          "key": "yblduz",
+          "key": "8joc5j",
           "pathname": "/marvel",
           "search": "",
           "state": undefined,
@@ -212,7 +212,7 @@ exports[`<DashboarRoutes> tests  1`] = `
             location={
               Object {
                 "hash": "",
-                "key": "yblduz",
+                "key": "8joc5j",
                 "pathname": "/marvel",
                 "search": "",
                 "state": undefined,
@@ -230,7 +230,7 @@ exports[`<DashboarRoutes> tests  1`] = `
                   "entries": Array [
                     Object {
                       "hash": "",
-                      "key": "yblduz",
+                      "key": "8joc5j",
                       "pathname": "/marvel",
                       "search": "",
                       "state": undefined,
@@ -244,7 +244,7 @@ exports[`<DashboarRoutes> tests  1`] = `
                   "listen": [Function],
                   "location": Object {
                     "hash": "",
-                    "key": "yblduz",
+                    "key": "8joc5j",
                     "pathname": "/marvel",
                     "search": "",
                     "state": undefined,
@@ -256,7 +256,7 @@ exports[`<DashboarRoutes> tests  1`] = `
               location={
                 Object {
                   "hash": "",
-                  "key": "yblduz",
+                  "key": "8joc5j",
                   "pathname": "/marvel",
                   "search": "",
                   "state": undefined,
