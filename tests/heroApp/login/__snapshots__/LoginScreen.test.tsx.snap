@@ -4,8 +4,8 @@ exports[`LoginScreen tests Should match the snapshot 1`] = `
 <LoginScreen
   history={
     Object {
-      "push": [Function],
-      "replace": [Function],
+      "push": [MockFunction],
+      "replace": [MockFunction],
     }
   }
 >

@@ -16,8 +16,8 @@ describe('LoginScreen tests', () => {
       },
     };
     history = {
-      push: jest.fn,
-      replace: jest.fn,
+      push: jest.fn(),
+      replace: jest.fn(),
     };
   });
   afterAll(() => {
@@ -31,5 +31,26 @@ describe('LoginScreen tests', () => {
       </AppContext.Provider>
     );
     expect(wrapper).toMatchSnapshot();
+  });
+  test('Should call the click handler', () => {
+    const wrapper = mount(
+      <AppContext.Provider value={appContext}>
+        <LoginScreen history={history} />
+      </AppContext.Provider>
+    );
+    wrapper.find('button').simulate('click');
+    expect(appContext.setUser).toHaveBeenCalledWith({
+      payload: {
+        email: 'beto@emial.com',
+        id: '1',
+        logged: false,
+        name: 'Beto',
+      },
+      type: '[auth] LOGIN',
+    });
+    expect(history.push).toHaveBeenCalledWith('/dc');
+    localStorage.setItem('lastPath', '/marvel');
+    wrapper.find('button').simulate('click');
+    expect(history.push).toHaveBeenCalledWith('/marvel');
   });
 });
