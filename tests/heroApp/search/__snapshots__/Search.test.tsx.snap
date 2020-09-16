@@ -1,0 +1,377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search tests Should match the snapshot 1`] = `
+<div
+  className="container-fluid"
+>
+  <h1
+    className="pl-5"
+  >
+    Search SearchScreen
+  </h1>
+  <hr />
+  <div
+    className="row pl-5"
+  >
+    <div
+      className="col-4"
+    >
+      <h4>
+        Search Form
+      </h4>
+      <hr />
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          autoComplete="off"
+          className="form-control"
+          name="query"
+          onChange={[Function]}
+          placeholder="Find your hero"
+          type="text"
+          value=""
+        />
+        <button
+          className="btn btn-outline-primary btn-block mt-3"
+          type="submit"
+        >
+          Search...
+        </button>
+      </form>
+    </div>
+    <div
+      className="col-7"
+    >
+      <h4>
+        Results
+      </h4>
+      <hr />
+      <div
+        className="alert alert-info ml-3 mr-3"
+      >
+        Search a heroe
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Search tests Should received the query params 1`] = `
+<SearchScreen
+  history={
+    Object {
+      "push": [MockFunction],
+    }
+  }
+>
+  <div>
+    <div
+      className="container-fluid"
+    >
+      <h1
+        className="pl-5"
+      >
+        Search SearchScreen
+      </h1>
+      <hr />
+      <div
+        className="row pl-5"
+      >
+        <div
+          className="col-4"
+        >
+          <h4>
+            Search Form
+          </h4>
+          <hr />
+          <form
+            onSubmit={[Function]}
+          >
+            <input
+              autoComplete="off"
+              className="form-control"
+              name="query"
+              onChange={[Function]}
+              placeholder="Find your hero"
+              type="text"
+              value="batman"
+            />
+            <button
+              className="btn btn-outline-primary btn-block mt-3"
+              type="submit"
+            >
+              Search...
+            </button>
+          </form>
+        </div>
+        <div
+          className="col-7"
+        >
+          <h4>
+            Results
+          </h4>
+          <hr />
+          <div
+            className="m-3"
+            key="dc-batman"
+          >
+            <HeroCard
+              alter_ego="Bruce Wayne"
+              characters="Bruce Wayne"
+              first_appearance="Detective Comics #27"
+              id="dc-batman"
+              publisher="DC Comics"
+              superhero="Batman"
+            >
+              <div
+                className="card ms-3"
+                style={
+                  Object {
+                    "maxWidth": 540,
+                  }
+                }
+              >
+                <div
+                  className="row no-gutters"
+                >
+                  <div
+                    className="col-md-4"
+                  >
+                    <img
+                      alt="Batman"
+                      className="card-img"
+                      src="./heroes/dc-batman.jpg"
+                    />
+                  </div>
+                  <div
+                    className="col-md-8"
+                  >
+                    <div
+                      className="card-body"
+                    >
+                      <h5
+                        className="card-title"
+                      >
+                        Batman
+                      </h5>
+                      <p
+                        className="card-text"
+                      >
+                        Bruce Wayne
+                      </p>
+                      <p
+                        className="card-text"
+                      >
+                        <small
+                          className="text-muted"
+                        >
+                          Detective Comics #27
+                        </small>
+                      </p>
+                      <Link
+                        to="./hero/dc-batman"
+                      >
+                        <LinkAnchor
+                          href="/hero/dc-batman"
+                          navigate={[Function]}
+                        >
+                          <a
+                            href="/hero/dc-batman"
+                            onClick={[Function]}
+                          >
+                            More...
+                          </a>
+                        </LinkAnchor>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </HeroCard>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</SearchScreen>
+`;
+
+exports[`Search tests Should render the warning component 1`] = `
+<MemoryRouter
+  initialEntries={
+    Array [
+      "/search?q=noresult",
+    ]
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "5szmuy",
+            "pathname": "/search",
+            "search": "?q=noresult",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "5szmuy",
+          "pathname": "/search",
+          "search": "?q=noresult",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Route
+      component={[Function]}
+      path="/search"
+    >
+      <component
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "canGo": [Function],
+            "createHref": [Function],
+            "entries": Array [
+              Object {
+                "hash": "",
+                "key": "5szmuy",
+                "pathname": "/search",
+                "search": "?q=noresult",
+                "state": undefined,
+              },
+            ],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "index": 0,
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "key": "5szmuy",
+              "pathname": "/search",
+              "search": "?q=noresult",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+        location={
+          Object {
+            "hash": "",
+            "key": "5szmuy",
+            "pathname": "/search",
+            "search": "?q=noresult",
+            "state": undefined,
+          }
+        }
+        match={
+          Object {
+            "isExact": true,
+            "params": Object {},
+            "path": "/search",
+            "url": "/search",
+          }
+        }
+      >
+        <SearchScreen
+          history={
+            Object {
+              "push": [MockFunction] {
+                "calls": Array [
+                  Array [
+                    "?q=noresult",
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+            }
+          }
+        >
+          <div>
+            <div
+              className="container-fluid"
+            >
+              <h1
+                className="pl-5"
+              >
+                Search SearchScreen
+              </h1>
+              <hr />
+              <div
+                className="row pl-5"
+              >
+                <div
+                  className="col-4"
+                >
+                  <h4>
+                    Search Form
+                  </h4>
+                  <hr />
+                  <form
+                    onSubmit={[Function]}
+                  >
+                    <input
+                      autoComplete="off"
+                      className="form-control"
+                      name="query"
+                      onChange={[Function]}
+                      placeholder="Find your hero"
+                      type="text"
+                      value="noresult"
+                    />
+                    <button
+                      className="btn btn-outline-primary btn-block mt-3"
+                      type="submit"
+                    >
+                      Search...
+                    </button>
+                  </form>
+                </div>
+                <div
+                  className="col-7"
+                >
+                  <h4>
+                    Results
+                  </h4>
+                  <hr />
+                  <div
+                    className="alert alert-danger ml-3 mr-3"
+                  >
+                    Theres is no a hero with noresult
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </SearchScreen>
+      </component>
+    </Route>
+  </Router>
+</MemoryRouter>
+`;

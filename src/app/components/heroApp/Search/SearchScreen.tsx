@@ -1,12 +1,15 @@
 import React, { useMemo, useState } from 'react';
 import useForm from '@hooks/useForm';
 import { AppSubmitEvent, AppChangeEvent } from '@typings/htmlEvents';
-import { useLocation, RouteComponentProps } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { parse } from 'query-string';
+import { History } from 'history';
 import getHeroeByName from '../services/getHeroeByName';
 import HeroCard from '../heroes/HeroCard';
 
-export type Props = RouteComponentProps;
+export type Props = {
+  history: History;
+};
 
 const SearchScreen = ({ history }: Props): JSX.Element => {
   const [searchTriggered, setSearchState] = useState(false);
@@ -26,7 +29,7 @@ const SearchScreen = ({ history }: Props): JSX.Element => {
   };
   return (
     <div>
-      <div className="container-fuid">
+      <div className="container-fluid">
         <h1 className="pl-5">Search SearchScreen</h1>
         <hr />
         <div className="row pl-5">
@@ -63,8 +66,8 @@ const SearchScreen = ({ history }: Props): JSX.Element => {
               </div>
             )}
             {heroesFiltered.map((heroe) => (
-              <div className="m-3">
-                <HeroCard key={heroe.id} {...heroe} />
+              <div key={heroe.id} className="m-3">
+                <HeroCard {...heroe} />
               </div>
             ))}
           </div>
