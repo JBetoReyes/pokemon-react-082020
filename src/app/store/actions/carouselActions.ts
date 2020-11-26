@@ -17,15 +17,13 @@ const setMainCarousel = (pokemons: IPokemon[]): CarouselActionsType => ({
   payload: pokemons,
 });
 
-export const loadMainCarousel = (): ThunkAction<
-  void,
-  IStoreState,
-  void,
-  CarouselActionsType
-> => {
+export const loadMainCarousel = (
+  page: number
+): ThunkAction<void, IStoreState, void, CarouselActionsType> => {
   return async (dispatch) => {
     try {
-      const pokemons = await fetchPokemons();
+      const pokemons = await fetchPokemons(page);
+      console.log(pokemons);
       dispatch(setMainCarousel(pokemons));
     } catch (err) {
       console.log(err);
