@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import SearchBar from '@components/common/SearchBar.component';
+import { IStoreState } from '../../models/storeModel';
+import { loadMainCarousel } from '../../store/actions/carouselActions';
 import Carousel from '@components/common/Carousel.component';
 import Card from '@components/common/Card.component';
-import useFetchPokemons from './Home.hooks';
 
-export interface IPokemonAPI {
-  results: IPokemonAM[];
+const mapState = (state: IStoreState) => ({
+  mainCarousel: state.mainCarousel
+});
+
+const mapDispatch = {
+  loadMainCarousel
 }
 
-export interface IPokemonAM {
-  name: string;
-  url: string;
-}
+const connector = connect(mapState, mapDispatch);
 
-export interface IPokemon extends IPokemonAM {
-  number: number;
-}
+// The inferred type will look like:
+// {mainCarousel: {isLoading: boolean, pokemons: []}, loadMainCarousel: () => void}
+type PropsFromRedux = ConnectedProps<typeof connector>
 
-export default (): JSX.Element => {
-  const pokemonImagesUrl = process.env.POKEMON_IMAGES_URL;
-  const { state, data: pokemons } = useFetchPokemons();
+export const Home = (props: PropsFromRedux): JSX.Element => {
+  const { mainCarousel: {isloading, pokemons}} = props;
+  const pokemonsImageUrl = process.env.POKEMON_IMAGES_URL;
+  useEffect(() => {
+    props.loadMainCarousel();
+  }, []);
   const carousel = (
     <Carousel>
       {pokemons.map(({ name, number }) => (
@@ -29,7 +35,7 @@ export default (): JSX.Element => {
           detailLabel="Name"
           subDetail={`${number}`}
           subDetailLabel="Pokemon Number"
-          url={`${pokemonImagesUrl}/${number}.png`}
+          url={`${pokemonsImageUrl}/${number}.png`}
         />
       ))}
     </Carousel>
@@ -37,7 +43,9 @@ export default (): JSX.Element => {
   return (
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
-      {state === 'loading' ? 'loading' : carousel}
+      {isloading ? 'loading' : carousel}
     </section>
   );
 };
+
+export default connector(Home);
