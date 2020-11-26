@@ -11,8 +11,7 @@
   transition: 450ms all;
   display: inline-block;
   margin-right: 10px;
-  @include size(200, 200);
-  padding: 25px 0;
+  padding: 25px 5px;
   position: relative;
 
   &:hover ~ & {
