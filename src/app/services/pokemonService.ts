@@ -3,9 +3,12 @@ import { get } from '../util/fetchWrapper';
 
 const numberRegex = /^.*\/(\d{1,4})\/?$/;
 
-export const fetchPokemons = async () => {
+export const fetchPokemons = async (page: number) => {
   const apiUrl = process.env.POKEMON_API as string;
-  const response = await get<IPokemonResponse>(apiUrl);
+  const offset = page === 1 ? 0 : (page - 1) * 20;
+  const response = await get<IPokemonResponse>(
+    `${apiUrl}?offset=${offset}&limit=20`
+  );
 
   return response.results.filter(filterResponse).map(processResponse);
 };
