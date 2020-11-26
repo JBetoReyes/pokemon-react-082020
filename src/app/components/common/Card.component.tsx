@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { MutableRefObject, ReactNode, RefObject } from 'react';
 import './_Card.component.scss';
 import { upperFirst } from 'lodash';
 
@@ -14,15 +14,16 @@ type Props = OwnProps & {
   children?: ReactNode;
 };
 
-const Card = ({
+const Card = React.forwardRef(({
   detail,
   subDetail,
   url,
   detailLabel,
   subDetailLabel,
-}: Props): JSX.Element => {
+}: Props,
+ref): JSX.Element => {
   return (
-    <div className="card-item">
+    <div className="card-item" ref={ref as React.RefObject<HTMLDivElement>} >
       <img src={`${url}`} alt="pokemonimage" className="card-item__img" />
       <div className="card-item__details">
         <p className="card-item__details--title">
@@ -34,6 +35,6 @@ const Card = ({
       </div>
     </div>
   );
-};
+});
 
 export default Card;
