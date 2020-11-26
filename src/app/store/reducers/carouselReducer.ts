@@ -15,7 +15,7 @@ export const carouselReducer = (
     case SET_POKEMONS:
       return {
         isloading: false,
-        pokemons: action.payload,
+        pokemons: [...state.pokemons, ...action.payload],
       };
     default:
       return state;
