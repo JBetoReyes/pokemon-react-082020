@@ -5,7 +5,6 @@ import { IStoreState } from '../../models/storeModel';
 import { loadMainCarousel } from '../../store/actions/carouselActions';
 import Card from '@components/common/Card.component';
 import { usePageRefresher } from '@hooks/usePageRefresher';
-import '../../components/common/_Carousel.component.scss';
 import Carousel from '@components/common/Carousel.component';
 
 const mapState = (state: IStoreState) => ({
@@ -25,34 +24,31 @@ type PropsFromRedux = ConnectedProps<typeof connector>
 export const Home = (props: PropsFromRedux): JSX.Element => {
   const { mainCarousel: {isloading, pokemons}} = props;
   const pokemonsImageUrl = process.env.POKEMON_IMAGES_URL;
-  const [page, setPage] = useState(1);
+  const initialPage = localStorage.getItem('page') ? +(localStorage.getItem('page') as string) : 1;
+  const [page, setPage] = useState(initialPage);
   useEffect(() => {
     props.loadMainCarousel(page);
   }, [page]);
   const [itemRef] = usePageRefresher(setPage);
-  const carousel = (
-    <Carousel>
-      {pokemons.map(({ name, number }, index) => {
-        const cardRefIndex = pokemons.length - 6;
-        return (
-        <Card
-          key={`${number}-${name}`}
-          detail={name}
-          detailLabel="Name"
-          subDetail={`${number}`}
-          subDetailLabel="Pokemon Number"
-          url={`${pokemonsImageUrl}/${number}.png`}
-          ref={index === cardRefIndex ? itemRef : null}
-        />
-      )
-      })}
-    </Carousel>
-  );
   return (
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
-      {isloading ? 'loading' : carousel}
-      <button type="button">load more</button>
+      <Carousel carouselName="mainCarousel">
+        {pokemons.map(({ name, number }, index) => {
+          const cardRefIndex = pokemons.length - 6;
+          return (
+          <Card
+            key={`${number}-${name}`}
+            detail={name}
+            detailLabel="Name"
+            subDetail={`${number}`}
+            subDetailLabel="Pokemon Number"
+            url={`${pokemonsImageUrl}/${number}.png`}
+            ref={index === cardRefIndex ? itemRef : null}
+          />
+        )
+        })}
+      </Carousel>
     </section>
   );
 };

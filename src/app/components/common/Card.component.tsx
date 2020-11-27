@@ -1,5 +1,5 @@
 import React, { MutableRefObject, ReactNode, RefObject } from 'react';
-import './_Card.component.scss';
+import './Card.component.scss';
 import { upperFirst } from 'lodash';
 
 export type OwnProps = {

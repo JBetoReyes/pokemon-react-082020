@@ -1,5 +1,8 @@
 import { ICarousel } from 'src/app/models/uiModel';
-import { CarouselActionsType } from '../actions/carouselActions';
+import {
+  CarouselActionsType,
+  SET_CAROUSEL_LOADING_STATE,
+} from '../actions/carouselActions';
 import { SET_POKEMONS } from '../actions/carouselActions';
 
 const initialState: ICarousel = {
@@ -16,6 +19,11 @@ export const carouselReducer = (
       return {
         isloading: false,
         pokemons: [...state.pokemons, ...action.payload],
+      };
+    case SET_CAROUSEL_LOADING_STATE:
+      return {
+        ...state,
+        isloading: action.payload,
       };
     default:
       return state;
