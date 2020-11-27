@@ -23,8 +23,9 @@ export const loadMainCarousel = (
   return async (dispatch) => {
     try {
       const pokemons = await fetchPokemons(page);
-      console.log(pokemons);
-      dispatch(setMainCarousel(pokemons));
+      if (pokemons) {
+        dispatch(setMainCarousel(pokemons));
+      }
     } catch (err) {
       console.log(err);
     }
