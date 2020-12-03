@@ -45,6 +45,45 @@
     right: 0;
     transition: 450ms opacity;
     top: 0;
+    &--plus-icon {
+      display: inline-block;
+      height: 20px;
+      transition: transform 0.3s ease;
+      width: 20px;
+      margin-right: 5px;
+      &:hover {
+        transform: scale(1.2);
+      }
+      &:active {
+        transform: scale(1.1);
+      }
+    }
+    &--more-icon {
+      // background: white;
+      // border-radius: 50px;
+      background: #c45d4c;
+      border-radius: 50%;
+      color: white;
+      display: inline-block;
+      height: 20px;
+      position: relative;
+      transition: transform 0.3s ease;
+      width: 20px;
+      &::after {
+        content: '...';
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -72%);
+        left: calc(50%);
+      }
+      &:hover {
+        transform: scale(1.2);
+      }
+      &:active {
+        transform: scale(1.1);
+      }
+    }
     &--sub-title,
     &--title {
       margin: 3px 0;

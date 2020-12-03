@@ -1,4 +1,4 @@
-import React, { MutableRefObject, ReactNode, RefObject } from 'react';
+import React, { ReactNode } from 'react';
 import { upperFirst } from 'lodash';
 import './Card.component.scss';
 
@@ -23,9 +23,16 @@ const Card = React.forwardRef(
       <div className="card-item" ref={ref as React.RefObject<HTMLDivElement>}>
         <img src={`${url}`} alt="pokemonimage" className="card-item__img" />
         <div className="card-item__details">
-          <img src="./assets/plus.svg" alt="plus-icon" />
+          <div className="card-item__detail--icons">
+            <img
+              className="card-item__details--plus-icon"
+              src="./assets/plus.svg"
+              alt="plus-icon"
+            />
+            <div className="card-item__details--more-icon" />
+          </div>
           <p className="card-item__details--title">
-            {`${upperFirst(detailLabel)}: ${upperFirst(detail)}`}
+            {`${upperFirst(detailLabel)}: ${detail}`}
           </p>
           <p className="card-item__details--sub-title">
             {`${upperFirst(subDetailLabel)}: ${upperFirst(subDetail)}`}
