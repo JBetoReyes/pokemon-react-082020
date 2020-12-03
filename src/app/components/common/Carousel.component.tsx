@@ -1,17 +1,17 @@
-import React, { LegacyRef, ReactNode, useEffect, useRef } from 'react';
-import LoadingDots from './LoadingDots';
+import React, { ReactNode } from 'react';
 import './Carousel.component.scss';
 import { IStoreState } from 'src/app/models/storeModel';
 import { connect, ConnectedProps } from 'react-redux';
+import LoadingDots from './LoadingDots';
 
 const mapState = (state: IStoreState) => {
   return {
-    mainCarousel: state.mainCarousel,
+    exploreCarousel: state.exploreCarousel,
   };
 };
 
 const connector = connect(mapState);
-type CarouselType = 'mainCarousel';
+type CarouselType = 'exploreCarousel';
 type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & {
   title: string;
@@ -22,6 +22,7 @@ type Props = PropsFromRedux & {
 const Carousel = (props: Props): JSX.Element => {
   const { children, carouselName, title } = props;
   let isLoading = false;
+  // eslint-disable-next-line react/destructuring-assignment
   if (carouselName && props[carouselName]) {
     isLoading = props[carouselName].isloading;
   }

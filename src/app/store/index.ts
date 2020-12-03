@@ -14,7 +14,7 @@ const pokemons: IPokemon[] = localStorage.getItem('pokemons')
 export default createStore(
   rootReducer,
   {
-    mainCarousel: {
+    exploreCarousel: {
       isloading: true,
       pokemons,
     },

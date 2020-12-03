@@ -8,7 +8,7 @@ import { loadMainCarousel } from '../../store/actions/carouselActions';
 import { IStoreState } from '../../models/storeModel';
 
 const mapState = (state: IStoreState) => ({
-  mainCarousel: state.mainCarousel,
+  mainCarousel: state.exploreCarousel,
 });
 
 const mapDispatch = {
@@ -37,7 +37,10 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
   return (
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
-      <Carousel carouselName="mainCarousel" title="Explore">
+      <Carousel carouselName="exploreCarousel" title="My List">
+        <div className="">Add your favorite pokemons</div>
+      </Carousel>
+      <Carousel carouselName="exploreCarousel" title="Explore">
         {pokemons.map(({ name, number }, index) => {
           const cardRefIndex = pokemons.length - 6;
           return (

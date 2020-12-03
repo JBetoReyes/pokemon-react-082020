@@ -2,15 +2,15 @@ import { ICarousel } from 'src/app/models/uiModel';
 import {
   CarouselActionsType,
   SET_CAROUSEL_LOADING_STATE,
+  SET_POKEMONS,
 } from '../actions/carouselActions';
-import { SET_POKEMONS } from '../actions/carouselActions';
 
 const initialState: ICarousel = {
   isloading: true,
   pokemons: [],
 };
 
-export const carouselReducer = (
+const carouselReducer = (
   state: ICarousel = initialState,
   action: CarouselActionsType
 ): ICarousel => {
@@ -29,3 +29,5 @@ export const carouselReducer = (
       return state;
   }
 };
+
+export default carouselReducer;
