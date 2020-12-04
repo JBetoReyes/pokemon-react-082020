@@ -1,6 +1,6 @@
 import { IPokemon } from './pokemonModel';
 
 export interface ICarousel {
-  isloading: boolean;
+  isloading?: boolean;
   pokemons: IPokemon[];
 }

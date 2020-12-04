@@ -24,7 +24,7 @@ const Carousel = (props: Props): JSX.Element => {
   let isLoading = false;
   // eslint-disable-next-line react/destructuring-assignment
   if (carouselName && props[carouselName]) {
-    isLoading = props[carouselName].isloading;
+    isLoading = !!props[carouselName].isloading;
   }
   return (
     <div className={`carousel ${isLoading ? 'loading' : ''}`}>

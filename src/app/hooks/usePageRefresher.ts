@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { useCallback, useRef } from 'react';
 
 export const usePageRefresher = (

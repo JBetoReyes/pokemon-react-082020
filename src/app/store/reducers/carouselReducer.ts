@@ -1,4 +1,4 @@
-import { ICarousel } from 'src/app/models/uiModel';
+import { ICarousel } from '../../models/uiModel';
 import {
   CarouselActionsType,
   SET_CAROUSEL_LOADING_STATE,

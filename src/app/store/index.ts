@@ -18,6 +18,9 @@ export default createStore(
       isloading: true,
       pokemons,
     },
+    myListCarousel: {
+      pokemons: [],
+    },
   },
   composeEnhancers(applyMiddleware(thunk))
 );

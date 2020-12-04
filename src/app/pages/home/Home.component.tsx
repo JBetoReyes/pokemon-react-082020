@@ -8,7 +8,8 @@ import { loadMainCarousel } from '../../store/actions/carouselActions';
 import { IStoreState } from '../../models/storeModel';
 
 const mapState = (state: IStoreState) => ({
-  mainCarousel: state.exploreCarousel,
+  exploreCarousel: state.exploreCarousel,
+  myListCarousel: state.myListCarousel,
 });
 
 const mapDispatch = {
@@ -23,7 +24,8 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 export const Home = (props: PropsFromRedux): JSX.Element => {
   const {
-    mainCarousel: { isloading, pokemons },
+    exploreCarousel: { pokemons },
+    myListCarousel,
   } = props;
   const pokemonsImageUrl = process.env.POKEMON_IMAGES_URL;
   const initialPage = localStorage.getItem('page')
@@ -38,7 +40,25 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
       <Carousel carouselName="exploreCarousel" title="My List">
-        <div className="">Add your favorite pokemons</div>
+        {myListCarousel.pokemons && myListCarousel.pokemons.length === 0 ? (
+          <div className="">Add your favorite pokemons</div>
+        ) : (
+          myListCarousel.pokemons.map(({ name, number }) => {
+            return (
+              <Card
+                key={`${number}-${name}`}
+                name={name}
+                number={number}
+                detail={name}
+                detailLabel="Name"
+                subDetail={`${number}`}
+                subDetailLabel="Pokemon Number"
+                url={`${pokemonsImageUrl}/${number}.png`}
+                ref={null}
+              />
+            );
+          })
+        )}
       </Carousel>
       <Carousel carouselName="exploreCarousel" title="Explore">
         {pokemons.map(({ name, number }, index) => {
@@ -46,6 +66,8 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
           return (
             <Card
               key={`${number}-${name}`}
+              name={name}
+              number={number}
               detail={name}
               detailLabel="Name"
               subDetail={`${number}`}
