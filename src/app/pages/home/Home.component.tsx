@@ -10,6 +10,7 @@ import { IStoreState } from '../../models/storeModel';
 const mapState = (state: IStoreState) => ({
   exploreCarousel: state.exploreCarousel,
   myListCarousel: state.myListCarousel,
+  searchResultsCarousel: state.searchResultsCarousel
 });
 
 const mapDispatch = {
@@ -26,6 +27,7 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
   const {
     exploreCarousel: { pokemons },
     myListCarousel,
+    searchResultsCarousel
   } = props;
   const pokemonsImageUrl = process.env.POKEMON_IMAGES_URL;
   const initialPage = localStorage.getItem('page')
@@ -36,12 +38,44 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
     props.loadMainCarousel(page);
   }, [page]);
   const [itemRef] = usePageRefresher(setPage);
-  const isMyListEmpty = myListCarousel.pokemons.length > 0;
+  const isMyListEmpty = myListCarousel.pokemons.length === 0;
   return (
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
+      { isMyListEmpty
+        ? (
+            <div className="empty-list-placeholder">
+              <img src="./assets/heart.png" alt="heart"/>
+              <div className="">Add your favorite pokemons.</div>
+            </div>
+          )
+        : null
+      }
+      { searchResultsCarousel.pokemons.length > 0
+        ? <Carousel carouselName="exploreCarousel" title="Search Results">
+            {
+              searchResultsCarousel.pokemons.map(({ name, number }) => {
+                return (
+                  <Card
+                    key={`${number}-${name}`}
+                    name={name}
+                    number={number}
+                    detail={name}
+                    detailLabel="Name"
+                    subDetail={`${number}`}
+                    subDetailLabel="Pokemon Number"
+                    url={`${pokemonsImageUrl}/${number}.png`}
+                    ref={null}
+                    addAction
+                  />
+                );
+              })
+            }
+        </Carousel>
+        : null
+      }
       {
-        isMyListEmpty 
+        !isMyListEmpty 
         ? <Carousel carouselName="exploreCarousel" title="My List">
             {
               myListCarousel.pokemons.map(({ name, number }) => {
@@ -62,12 +96,7 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
               })
             }
         </Carousel>
-        : (
-            <div className="empty-list-placeholder">
-              <img src="./assets/heart.png" alt="heart"/>
-              <div className="">Add your favorite pokemons.</div>
-            </div>
-          )
+        : null
       }
       <Carousel carouselName="exploreCarousel" title="Explore">
         {pokemons.map(({ name, number }, index) => {

@@ -1,29 +1,30 @@
-import React, { useState, Validator } from 'react';
+import React, { Validator } from 'react';
 import PropTypes from 'prop-types';
+import { connect, ConnectedProps } from 'react-redux';
+import useForm from '../../hooks/useForm';
+import { searchPokemons } from '../../store/actions/carouselActions';
 import './_SearchBar.component.scss';
+import { AppSubmitEvent } from '@typings/htmlEvents';
 
+const mapDispatch = {
+  searchPokemons
+};
+
+const connection = connect(null, mapDispatch);
 export type OwnProps = {
   title: string;
 };
 
-type Props = {
-  propTypes: Record<string, Validator<any>> & OwnProps;
-};
-type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
-type SubmitEvent = React.FormEvent<HTMLFormElement>;
+type ReduxProps = ConnectedProps<typeof connection>;
 
-const SearchBar = ({ title }: OwnProps): JSX.Element => {
-  const [searchValue, setSearchValue] = useState('');
-
-  const handleSearchInput = (event: ChangeEvent) => {
-    if (event.target.value.trim().length > 2) {
-      setSearchValue(event.target.value.trim());
-    }
-  };
-
-  const handelSubmit = (event: SubmitEvent) => {
+type Props = OwnProps & ReduxProps;
+const SearchBar = (props : Props): JSX.Element => {
+  const { title } = props;
+  const [formData, handleChange] = useForm({ searchValue: ''});
+  const { searchValue } = formData;
+  const handelSubmit = (event: AppSubmitEvent) => {
     event.preventDefault();
-    setSearchValue('');
+    props.searchPokemons(searchValue);
   };
 
   return (
@@ -33,8 +34,9 @@ const SearchBar = ({ title }: OwnProps): JSX.Element => {
         <input
           className="search-bar__input"
           type="text"
-          value={searchValue}
-          onChange={handleSearchInput}
+          name="searchValue"
+          value={formData.searchValue}
+          onChange={handleChange}
         />
       </form>
     </div>
@@ -45,4 +47,4 @@ SearchBar.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-export default SearchBar;
+export default connection(SearchBar);

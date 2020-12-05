@@ -1,4 +1,4 @@
-import { fetchPokemons } from '@services/pokemonService';
+import { fetchPokemons, fetchAllPokemons } from '@services/pokemonService';
 import { ThunkAction } from 'redux-thunk';
 import { IPokemon } from '../../models/pokemonModel';
 import { IStoreState } from '../../models/storeModel';
@@ -8,6 +8,7 @@ export const SET_CAROUSEL_LOADING_STATE =
   '[Carousel] Set carousel loadingState';
 export const ADD_POKEMON_MY_LIST = '[Carousel] Add pokemon my list';
 export const DELETE_POKEMON_MY_LIST = '[Carousel] Delete pokemon my list';
+export const SET_SEARCH_RESULTS = '[Carousel] Set search results';
 
 interface ISetMainCarousel {
   type: typeof SET_POKEMONS;
@@ -29,11 +30,17 @@ interface IDeletePokemonMyList {
   payload: string;
 }
 
+interface ISetSearchResults {
+  type: typeof SET_SEARCH_RESULTS;
+  payload: IPokemon[];
+}
+
 export type CarouselActionsType =
   | ISetMainCarousel
   | ISetMainLoadingState
   | IAddPokemonMyList
-  | IDeletePokemonMyList;
+  | IDeletePokemonMyList
+  | ISetSearchResults;
 
 const setMainCarousel = (pokemons: IPokemon[]): CarouselActionsType => ({
   type: '[Carousel] Set pokemons',
@@ -80,5 +87,28 @@ export const deletePokemonMyList = (
   return {
     type: DELETE_POKEMON_MY_LIST,
     payload: pokemonNumber,
+  };
+};
+
+export const setSearchResults = (pokemons: IPokemon[]): CarouselActionsType => {
+  return {
+    type: SET_SEARCH_RESULTS,
+    payload: pokemons,
+  };
+};
+
+export const searchPokemons = (
+  query: string
+): ThunkAction<void, IStoreState, void, CarouselActionsType> => {
+  return (dispatch) => {
+    if (query === '') {
+      dispatch(setSearchResults([]));
+      return;
+    }
+    const mockResponse = fetchAllPokemons();
+    const results = mockResponse.filter((pokemon) => {
+      return pokemon.name.includes(query) || pokemon.number.includes(query);
+    });
+    dispatch(setSearchResults(results));
   };
 };

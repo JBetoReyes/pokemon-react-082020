@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { AppChangeEvent, AppSubmitEvent } from 'src/typings/htmlEvents';
 import { AppFormData } from '@typings/hooks';
 
-export type HookData<T extends AppFormData> = {
-  formData: T;
-  handleChange: (e: AppChangeEvent) => void;
-  handleSubmit: (e: AppSubmitEvent) => void;
-  reset: () => void;
-};
+export type HookData<T extends AppFormData> = [
+  T,
+  (e: AppChangeEvent) => void,
+  (e: AppSubmitEvent) => void,
+  () => void
+];
 
 const useForm = <T extends AppFormData>(initialState: T): HookData<T> => {
   const [formData, setFormData] = useState<T>(initialState);
@@ -23,12 +23,7 @@ const useForm = <T extends AppFormData>(initialState: T): HookData<T> => {
   const reset = () => {
     setFormData(initialState);
   };
-  return {
-    formData,
-    handleChange,
-    handleSubmit,
-    reset,
-  };
+  return [formData, handleChange, handleSubmit, reset];
 };
 
 export default useForm;
