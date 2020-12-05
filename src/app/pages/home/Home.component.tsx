@@ -36,30 +36,38 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
     props.loadMainCarousel(page);
   }, [page]);
   const [itemRef] = usePageRefresher(setPage);
+  const isMyListEmpty = myListCarousel.pokemons.length > 0;
   return (
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
-      <Carousel carouselName="exploreCarousel" title="My List">
-        {myListCarousel.pokemons && myListCarousel.pokemons.length === 0 ? (
-          <div className="">Add your favorite pokemons</div>
-        ) : (
-          myListCarousel.pokemons.map(({ name, number }) => {
-            return (
-              <Card
-                key={`${number}-${name}`}
-                name={name}
-                number={number}
-                detail={name}
-                detailLabel="Name"
-                subDetail={`${number}`}
-                subDetailLabel="Pokemon Number"
-                url={`${pokemonsImageUrl}/${number}.png`}
-                ref={null}
-              />
-            );
-          })
-        )}
-      </Carousel>
+      {
+        isMyListEmpty 
+        ? <Carousel carouselName="exploreCarousel" title="My List">
+            {
+              myListCarousel.pokemons.map(({ name, number }) => {
+                return (
+                  <Card
+                    key={`${number}-${name}`}
+                    name={name}
+                    number={number}
+                    detail={name}
+                    detailLabel="Name"
+                    subDetail={`${number}`}
+                    subDetailLabel="Pokemon Number"
+                    url={`${pokemonsImageUrl}/${number}.png`}
+                    ref={null}
+                  />
+                );
+              })
+            }
+        </Carousel>
+        : (
+            <div className="empty-list-placeholder">
+              <img src="./assets/heart.png" alt="heart"/>
+              <div className="">Add your favorite pokemons.</div>
+            </div>
+          )
+      }
       <Carousel carouselName="exploreCarousel" title="Explore">
         {pokemons.map(({ name, number }, index) => {
           const cardRefIndex = pokemons.length - 6;

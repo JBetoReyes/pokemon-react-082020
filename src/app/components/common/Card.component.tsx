@@ -58,7 +58,7 @@ const Card = (props: Props): JSX.Element => {
     >
       <img src={`${url}`} alt="pokemonimage" className="card-item__img" />
       <div className="card-item__details">
-        <div className="card-item__detail--icons">
+        <div className="card-item__details--icons">
           <img
             className="card-item__details--plus-icon"
             src="./assets/plus.svg"
