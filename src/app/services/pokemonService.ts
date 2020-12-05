@@ -1,5 +1,6 @@
 import { IPokemon, IPokemonNM, IPokemonResponse } from '../models/pokemonModel';
 import { get } from '../util/fetchWrapper';
+import * as mockResponse from '../store/mockResponse.json';
 
 const numberRegex = /^.*\/(\d{1,4})\/?$/;
 
@@ -17,6 +18,10 @@ export const fetchPokemons = async (page: number) => {
   const pokemons = response.results.filter(filterResponse).map(processResponse);
   updateStorage(pokemons, page);
   return pokemons;
+};
+
+export const fetchAllPokemons = () => {
+  return mockResponse.results.filter(filterResponse).map(processResponse);
 };
 
 export const filterResponse = (pokemon: IPokemonNM) => {
