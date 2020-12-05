@@ -3,11 +3,12 @@
 import React, { ReactNode } from 'react';
 import { upperFirst } from 'lodash';
 import { connect, ConnectedProps } from 'react-redux';
-import { addPokemonMyList } from '../../store/actions/carouselActions';
+import { addPokemonMyList, deletePokemonMyList } from '../../store/actions/carouselActions';
 import './Card.component.scss';
 
 const mapDispatch = {
   addPokemonMyList,
+  deletePokemonMyList
 };
 
 const connection = connect(null, mapDispatch);
@@ -27,6 +28,8 @@ export type OwnProps = {
   subDetailLabel: string;
   url: string;
   children?: ReactNode;
+  addAction?: boolean;
+  deleteAction?: boolean;
 };
 
 type ForwardedRefProp = {
@@ -43,6 +46,8 @@ const Card = (props: Props): JSX.Element => {
     detailLabel,
     subDetailLabel,
     myForwardedRef,
+    addAction = false,
+    deleteAction = false,
   } = props;
   const handleAddPokemon = () => {
     props.addPokemonMyList({
@@ -51,6 +56,9 @@ const Card = (props: Props): JSX.Element => {
       url: props.url,
     });
   };
+  const handleDeletePokemon = () => {
+    props.deletePokemonMyList(props.number);
+  }
   return (
     <div
       className="card-item"
@@ -59,12 +67,22 @@ const Card = (props: Props): JSX.Element => {
       <img src={`${url}`} alt="pokemonimage" className="card-item__img" />
       <div className="card-item__details">
         <div className="card-item__details--icons">
-          <img
-            className="card-item__details--plus-icon"
-            src="./assets/plus.svg"
-            alt="plus-icon"
-            onClick={handleAddPokemon}
-          />
+          { deleteAction ?
+            <img
+              className="card-item__details--icon"
+              src="./assets/minus.png"
+              alt="delete"
+              onClick={handleDeletePokemon}
+            /> : null
+          }
+          { addAction ? 
+            <img
+              className="card-item__details--icon"
+              src="./assets/plus.svg"
+              alt="add"
+              onClick={handleAddPokemon}
+            /> : null
+          }
           <div className="card-item__details--more-icon" />
         </div>
         <p className="card-item__details--title">

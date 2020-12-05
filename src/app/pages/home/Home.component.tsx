@@ -56,6 +56,7 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
                     subDetailLabel="Pokemon Number"
                     url={`${pokemonsImageUrl}/${number}.png`}
                     ref={null}
+                    deleteAction
                   />
                 );
               })
@@ -82,6 +83,7 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
               subDetailLabel="Pokemon Number"
               url={`${pokemonsImageUrl}/${number}.png`}
               ref={index === cardRefIndex ? itemRef : null}
+              addAction
             />
           );
         })}

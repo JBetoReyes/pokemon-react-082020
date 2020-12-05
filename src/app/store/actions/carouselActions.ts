@@ -7,6 +7,7 @@ export const SET_POKEMONS = '[Carousel] Set pokemons';
 export const SET_CAROUSEL_LOADING_STATE =
   '[Carousel] Set carousel loadingState';
 export const ADD_POKEMON_MY_LIST = '[Carousel] Add pokemon my list';
+export const DELETE_POKEMON_MY_LIST = '[Carousel] Delete pokemon my list';
 
 interface ISetMainCarousel {
   type: typeof SET_POKEMONS;
@@ -23,10 +24,16 @@ interface IAddPokemonMyList {
   payload: IPokemon;
 }
 
+interface IDeletePokemonMyList {
+  type: typeof DELETE_POKEMON_MY_LIST;
+  payload: string;
+}
+
 export type CarouselActionsType =
   | ISetMainCarousel
   | ISetMainLoadingState
-  | IAddPokemonMyList;
+  | IAddPokemonMyList
+  | IDeletePokemonMyList;
 
 const setMainCarousel = (pokemons: IPokemon[]): CarouselActionsType => ({
   type: '[Carousel] Set pokemons',
@@ -64,5 +71,14 @@ export const addPokemonMyList = (pokemon: IPokemon): CarouselActionsType => {
   return {
     type: ADD_POKEMON_MY_LIST,
     payload: pokemon,
+  };
+};
+
+export const deletePokemonMyList = (
+  pokemonNumber: string
+): CarouselActionsType => {
+  return {
+    type: DELETE_POKEMON_MY_LIST,
+    payload: pokemonNumber,
   };
 };

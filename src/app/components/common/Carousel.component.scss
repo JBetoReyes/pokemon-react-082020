@@ -5,6 +5,11 @@
   position: relative;
   animation: slide-up 2s;
 
+  &--title {
+    left: 0;
+    position: sticky;
+  }
+
   &__container {
     white-space: nowrap;
     margin: 50px 0;

@@ -4,8 +4,8 @@
 }
 
 @keyframes fadeout {
-  to { opacity: 0; }
-  from { opacity: 1; }
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 @keyframes slide-up {
