@@ -107,7 +107,7 @@ export const searchPokemons = (
     }
     const mockResponse = fetchAllPokemons();
     const results = mockResponse.filter((pokemon) => {
-      return pokemon.name.includes(query) || pokemon.number.includes(query);
+      return pokemon.name.includes(query) || pokemon.number === query;
     });
     dispatch(setSearchResults(results));
   };
