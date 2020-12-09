@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { History } from 'history';
 import SearchBar from '@components/common/SearchBar.component';
-import Card from '@components/common/Card.component';
+import cardFactory from '@components/common/Card.component';
 import { usePageRefresher } from '@hooks/usePageRefresher';
 import Carousel from '@components/common/Carousel.component';
-import { loadMainCarousel } from '../../store/actions/carouselActions';
+import { addPokemonMyList, deletePokemonMyList, loadMainCarousel } from '../../store/actions/carouselActions';
 import { IStoreState } from '../../models/storeModel';
+import { IPokemon } from '../../models/pokemonModel';
 
-const mapState = (state: IStoreState) => ({
-  exploreCarousel: state.exploreCarousel,
-  myListCarousel: state.myListCarousel,
-  searchResultsCarousel: state.searchResultsCarousel
-});
+const Card = cardFactory<IPokemon>();
+
+const mapState = (state: IStoreState) => {
+  return {
+    exploreCarousel: state.exploreCarousel,
+    myListCarousel: state.myListCarousel,
+    searchResultsCarousel: state.searchResultsCarousel
+  }
+};
 
 const mapDispatch = {
+  addPokemonMyList,
+  deletePokemonMyList,
   loadMainCarousel,
 };
 
@@ -23,7 +32,7 @@ const connector = connect(mapState, mapDispatch);
 // {mainCarousel: {isLoading: boolean, pokemons: []}, loadMainCarousel: () => void}
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export const Home = (props: PropsFromRedux): JSX.Element => {
+const Home = (props: PropsFromRedux): JSX.Element => {
   const {
     exploreCarousel: { pokemons },
     myListCarousel,
@@ -39,6 +48,30 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
   }, [page]);
   const [itemRef] = usePageRefresher(setPage);
   const isMyListEmpty = myListCarousel.pokemons.length === 0;
+  const addActionHandler = (pokemon: IPokemon) => {
+    props.addPokemonMyList(pokemon);
+  };
+  const deleteActionHandler = (pokemon: IPokemon) => {
+    props.deletePokemonMyList(pokemon.number);
+  };
+  const detailActionHandler = (pokemon: IPokemon, history: History) => {
+    history.push(`/pokemon/${pokemon.number}`, {
+      ...pokemon 
+    });
+  };
+  const cardPokemonMapper = (pokemon: IPokemon) => {
+    const { name, number } = pokemon;
+    return {
+      key: `${number}-${name}`,
+      detail: name,
+      detailLabel: "Name",
+      subDetail: number,
+      subDetailLabel: "Pokemon Number",
+      url: `${pokemonsImageUrl}/${number}.png`,
+      ref: null,
+      data: pokemon
+    };
+  };
   return (
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
@@ -54,19 +87,12 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
       { searchResultsCarousel.pokemons.length > 0
         ? <Carousel carouselName="exploreCarousel" title="Search Results">
             {
-              searchResultsCarousel.pokemons.map(({ name, number }) => {
+              searchResultsCarousel.pokemons.map((pokemon) => {
                 return (
                   <Card
-                    key={`${number}-${name}`}
-                    name={name}
-                    number={number}
-                    detail={name}
-                    detailLabel="Name"
-                    subDetail={`${number}`}
-                    subDetailLabel="Pokemon Number"
-                    url={`${pokemonsImageUrl}/${number}.png`}
-                    ref={null}
-                    addAction
+                    {...cardPokemonMapper(pokemon)}
+                    addActionHandler={addActionHandler}
+                    detailActionHandler={detailActionHandler}
                   />
                 );
               })
@@ -78,19 +104,12 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
         !isMyListEmpty 
         ? <Carousel carouselName="exploreCarousel" title="My List">
             {
-              myListCarousel.pokemons.map(({ name, number }) => {
+              myListCarousel.pokemons.map((pokemon) => {
                 return (
                   <Card
-                    key={`${number}-${name}`}
-                    name={name}
-                    number={number}
-                    detail={name}
-                    detailLabel="Name"
-                    subDetail={`${number}`}
-                    subDetailLabel="Pokemon Number"
-                    url={`${pokemonsImageUrl}/${number}.png`}
-                    ref={null}
-                    deleteAction
+                    {...cardPokemonMapper(pokemon)}
+                    deleteActionHandler={deleteActionHandler}
+                    detailActionHandler={detailActionHandler}
                   />
                 );
               })
@@ -99,20 +118,14 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
         : null
       }
       <Carousel carouselName="exploreCarousel" title="Explore">
-        {pokemons.map(({ name, number }, index) => {
-          const cardRefIndex = pokemons.length - 6;
+        {pokemons.map((pokemon, index) => {
+          const cardRefIndex = pokemons.length - 10;
           return (
             <Card
-              key={`${number}-${name}`}
-              name={name}
-              number={number}
-              detail={name}
-              detailLabel="Name"
-              subDetail={`${number}`}
-              subDetailLabel="Pokemon Number"
-              url={`${pokemonsImageUrl}/${number}.png`}
+              {...cardPokemonMapper(pokemon)}
               ref={index === cardRefIndex ? itemRef : null}
-              addAction
+              addActionHandler={addActionHandler}
+              detailActionHandler={detailActionHandler}
             />
           );
         })}
@@ -121,4 +134,4 @@ export const Home = (props: PropsFromRedux): JSX.Element => {
   );
 };
 
-export default connector(Home);
+export default withRouter(connector(Home));
