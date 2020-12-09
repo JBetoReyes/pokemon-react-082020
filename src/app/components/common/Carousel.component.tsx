@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
-import './Carousel.component.scss';
-import { IStoreState } from 'src/app/models/storeModel';
 import { connect, ConnectedProps } from 'react-redux';
+import { IStoreState } from '../../models/storeModel';
 import LoadingDots from './LoadingDots';
 
 const mapState = (state: IStoreState) => {

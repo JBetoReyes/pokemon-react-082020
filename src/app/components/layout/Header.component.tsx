@@ -1,5 +1,4 @@
 import React from 'react';
-import './_Header.component.scss';
 import logo from '@assets/pokemon-logo.png';
 import profile from '@assets/profile.png';
 

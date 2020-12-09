@@ -1,12 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from '../store'
 import Header from '@components/layout/Header.component';
+import store from '../store';
 import AppRouter from './AppRouter';
 
 const App = (): JSX.Element => {
   return (
-    <Provider store={store} >
+    <Provider store={store}>
       <Header />
       <AppRouter />
     </Provider>

@@ -1,13 +1,12 @@
 import React, { Validator } from 'react';
 import PropTypes from 'prop-types';
 import { connect, ConnectedProps } from 'react-redux';
+import { AppSubmitEvent } from '@typings/htmlEvents';
 import useForm from '../../hooks/useForm';
 import { searchPokemons } from '../../store/actions/carouselActions';
-import './_SearchBar.component.scss';
-import { AppSubmitEvent } from '@typings/htmlEvents';
 
 const mapDispatch = {
-  searchPokemons
+  searchPokemons,
 };
 
 const connection = connect(null, mapDispatch);
@@ -18,9 +17,9 @@ export type OwnProps = {
 type ReduxProps = ConnectedProps<typeof connection>;
 
 type Props = OwnProps & ReduxProps;
-const SearchBar = (props : Props): JSX.Element => {
+const SearchBar = (props: Props): JSX.Element => {
   const { title } = props;
-  const [formData, handleChange] = useForm({ searchValue: ''});
+  const [formData, handleChange] = useForm({ searchValue: '' });
   const { searchValue } = formData;
   const handelSubmit = (event: AppSubmitEvent) => {
     event.preventDefault();
