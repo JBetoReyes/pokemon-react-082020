@@ -15,11 +15,6 @@
   position: relative;
   animation: fadein .7s;
 
-  &:hover ~ & {
-    -webkit-transform: translate3d(50px, 0, 0);
-    transform: translate3d(50px, 0, 0);
-  }
-
   &__img {
     @include size(200, 200);
     object-fit: contain;
@@ -126,13 +121,6 @@
     }
   }
 
-  &:hover {
-    -webkit-transform: scale(1.5);
-    transform: scale(1.5);
-    #{$ns}__details {
-      opacity: 1;
-    }
-  }
 }
 
 .carousel__container {
