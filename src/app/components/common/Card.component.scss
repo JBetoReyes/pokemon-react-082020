@@ -64,13 +64,18 @@
     &--more-icon {
       // background: white;
       // border-radius: 50px;
-      background: #145f74;
+      background: #33bea6;
       border-radius: 50%;
       color: white;
       height: 20px;
       position: relative;
       transition: transform 0.3s ease;
       width: 20px;
+      border: none;
+      outline-style: none;
+      &:focus {
+        outline: none;
+      }
       &::after {
         content: '...';
         font-size: 20px;
