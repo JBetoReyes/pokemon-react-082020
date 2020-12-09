@@ -5,7 +5,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { History } from 'history';
 import SearchBar from '@components/common/SearchBar.component';
-import cardFactory from '@components/common/Card.component';
+import cardFactory from '@components/common/Card';
 import { usePageRefresher } from '@hooks/usePageRefresher';
 import Carousel from '@components/common/Carousel.component';
 import {
