@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -6,7 +8,11 @@ import SearchBar from '@components/common/SearchBar.component';
 import cardFactory from '@components/common/Card.component';
 import { usePageRefresher } from '@hooks/usePageRefresher';
 import Carousel from '@components/common/Carousel.component';
-import { addPokemonMyList, deletePokemonMyList, loadMainCarousel } from '../../store/actions/carouselActions';
+import {
+  addPokemonMyList,
+  deletePokemonMyList,
+  loadMainCarousel,
+} from '../../store/actions/carouselActions';
 import { IStoreState } from '../../models/storeModel';
 import { IPokemon } from '../../models/pokemonModel';
 
@@ -16,8 +22,8 @@ const mapState = (state: IStoreState) => {
   return {
     exploreCarousel: state.exploreCarousel,
     myListCarousel: state.myListCarousel,
-    searchResultsCarousel: state.searchResultsCarousel
-  }
+    searchResultsCarousel: state.searchResultsCarousel,
+  };
 };
 
 const mapDispatch = {
@@ -36,7 +42,7 @@ const Home = (props: PropsFromRedux): JSX.Element => {
   const {
     exploreCarousel: { pokemons },
     myListCarousel,
-    searchResultsCarousel
+    searchResultsCarousel,
   } = props;
   const pokemonsImageUrl = process.env.POKEMON_IMAGES_URL;
   const initialPage = localStorage.getItem('page')
@@ -56,7 +62,7 @@ const Home = (props: PropsFromRedux): JSX.Element => {
   };
   const detailActionHandler = (pokemon: IPokemon, history: History) => {
     history.push(`/pokemon/${pokemon.number}`, {
-      ...pokemon 
+      ...pokemon,
     });
   };
   const cardPokemonMapper = (pokemon: IPokemon) => {
@@ -64,59 +70,49 @@ const Home = (props: PropsFromRedux): JSX.Element => {
     return {
       key: `${number}-${name}`,
       detail: name,
-      detailLabel: "Name",
+      detailLabel: 'Name',
       subDetail: number,
-      subDetailLabel: "Pokemon Number",
+      subDetailLabel: 'Pokemon Number',
       url: `${pokemonsImageUrl}/${number}.png`,
       ref: null,
-      data: pokemon
+      data: pokemon,
     };
   };
   return (
     <section>
       <SearchBar title="Which is your favorite pokemon?" />
-      { isMyListEmpty
-        ? (
-            <div className="empty-list-placeholder">
-              <img src="./assets/heart.png" alt="heart"/>
-              <div className="">Add your favorite pokemons.</div>
-            </div>
-          )
-        : null
-      }
-      { searchResultsCarousel.pokemons.length > 0
-        ? <Carousel carouselName="exploreCarousel" title="Search Results">
-            {
-              searchResultsCarousel.pokemons.map((pokemon) => {
-                return (
-                  <Card
-                    {...cardPokemonMapper(pokemon)}
-                    addActionHandler={addActionHandler}
-                    detailActionHandler={detailActionHandler}
-                  />
-                );
-              })
-            }
+      {isMyListEmpty ? (
+        <div className="empty-list-placeholder">
+          <img src="./assets/heart.png" alt="heart" />
+          <div className="">Add your favorite pokemons.</div>
+        </div>
+      ) : null}
+      {searchResultsCarousel.pokemons.length > 0 ? (
+        <Carousel carouselName="exploreCarousel" title="Search Results">
+          {searchResultsCarousel.pokemons.map((pokemon) => {
+            return (
+              <Card
+                {...cardPokemonMapper(pokemon)}
+                addActionHandler={addActionHandler}
+                detailActionHandler={detailActionHandler}
+              />
+            );
+          })}
         </Carousel>
-        : null
-      }
-      {
-        !isMyListEmpty 
-        ? <Carousel carouselName="exploreCarousel" title="My List">
-            {
-              myListCarousel.pokemons.map((pokemon) => {
-                return (
-                  <Card
-                    {...cardPokemonMapper(pokemon)}
-                    deleteActionHandler={deleteActionHandler}
-                    detailActionHandler={detailActionHandler}
-                  />
-                );
-              })
-            }
+      ) : null}
+      {!isMyListEmpty ? (
+        <Carousel carouselName="exploreCarousel" title="My List">
+          {myListCarousel.pokemons.map((pokemon) => {
+            return (
+              <Card
+                {...cardPokemonMapper(pokemon)}
+                deleteActionHandler={deleteActionHandler}
+                detailActionHandler={detailActionHandler}
+              />
+            );
+          })}
         </Carousel>
-        : null
-      }
+      ) : null}
       <Carousel carouselName="exploreCarousel" title="Explore">
         {pokemons.map((pokemon, index) => {
           const cardRefIndex = pokemons.length - 10;

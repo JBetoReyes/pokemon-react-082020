@@ -1,3 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { ReactNode } from 'react';
@@ -5,12 +9,14 @@ import { upperFirst } from 'lodash';
 import { connect, ConnectedProps } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { History } from 'history';
-import { addPokemonMyList, deletePokemonMyList } from '../../store/actions/carouselActions';
-import './Card.component.scss';
+import {
+  addPokemonMyList,
+  deletePokemonMyList,
+} from '../../store/actions/carouselActions';
 
 const mapDispatch = {
   addPokemonMyList,
-  deletePokemonMyList
+  deletePokemonMyList,
 };
 
 const connection = connect(null, mapDispatch);
@@ -28,7 +34,7 @@ export type OwnProps<T extends Object> = {
   subDetailLabel: string;
   url: string;
   children?: ReactNode;
-  data?: T
+  data?: T;
   addActionHandler?: (data: T) => void;
   detailActionHandler?: (data: T, history: History) => void;
   deleteActionHandler?: (data: T) => void;
@@ -50,7 +56,7 @@ const CardFactory = <T extends Object>() => (props: Props<T>): JSX.Element => {
     myForwardedRef,
     addActionHandler,
     deleteActionHandler,
-    detailActionHandler
+    detailActionHandler,
   } = props;
   const history = useHistory();
   return (
@@ -61,25 +67,29 @@ const CardFactory = <T extends Object>() => (props: Props<T>): JSX.Element => {
       <img src={`${url}`} alt="pokemonimage" className="card-item__img" />
       <div className="card-item__details">
         <div className="card-item__details--icons">
-          { deleteActionHandler ?
+          {deleteActionHandler ? (
             <img
               className="card-item__details--icon"
               src="./assets/minus.png"
               alt="delete"
               onClick={() => deleteActionHandler(props.data as T)}
-            /> : null
-          }
-          { props.data && addActionHandler ? 
+            />
+          ) : null}
+          {props.data && addActionHandler ? (
             <img
               className="card-item__details--icon"
               src="./assets/plus.svg"
               alt="add"
               onClick={() => addActionHandler(props.data as T)}
-            /> : null
-          }
-          {detailActionHandler &&
-            <button className="card-item__details--more-icon" onClick={() => detailActionHandler(props.data as T, history)}/>
-          }
+            />
+          ) : null}
+          {detailActionHandler && (
+            <button
+              type="button"
+              className="card-item__details--more-icon"
+              onClick={() => detailActionHandler(props.data as T, history)}
+            />
+          )}
         </div>
         <p className="card-item__details--title">
           {`${upperFirst(detailLabel)}: ${detail}`}
@@ -99,7 +109,7 @@ const cardFactory = <T extends Object>() => {
   return React.forwardRef((props: OwnProps<T>, ref) => {
     // eslint-disable-next-line react/jsx-props-no-spreading
     return <ConnectedComponent {...props} myForwardedRef={ref} />;
-  })
+  });
 };
 
 export default cardFactory;
