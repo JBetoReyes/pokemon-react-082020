@@ -1,0 +1,26 @@
+.data-container {
+    background-color: #ebebeb;
+    border: solid thin;
+    border-radius: 10px;
+    height: 250px;
+
+    .stats-table {
+        align-items: center;
+        display: grid;
+        font-size: 20px;
+        grid-template-columns: 1fr 35px 1fr 35px;
+        grid-template-rows: repeat(3, 50px);
+        grid-gap: 0px 15px;
+        padding: 15px;
+        text-align: left;
+    
+    
+        .stats-table--label {
+            font-weight: 800;
+        }
+    
+        .stats-table--data {
+            font-weight: 300;
+       }
+    }
+}
