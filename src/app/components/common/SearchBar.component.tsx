@@ -27,7 +27,7 @@ const SearchBar = (props: Props): JSX.Element => {
   };
 
   return (
-    <div className="search-bar__container">
+    <div className="search-bar__container mb-5">
       <h2 className="search-bar__title">{title}</h2>
       <form className="search-bar__form" onSubmit={handelSubmit}>
         <input
