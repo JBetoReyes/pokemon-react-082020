@@ -53,6 +53,7 @@ export interface IPokemonDetails {
   stats: IStats[];
   types: IPokemonType[];
   weaknesses: string[];
+  strong: string[];
 }
 
 export interface IPokemonResponse extends IAppFetchResponse {
