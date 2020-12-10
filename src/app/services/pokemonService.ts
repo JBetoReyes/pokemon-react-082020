@@ -53,6 +53,10 @@ export const fetchPokemon = async (
       (acc, curr) => [...acc, ...curr.weak],
       []
     ),
+    strong: typesRelations.reduce<string[]>(
+      (acc, curr) => [...acc, ...curr.strong],
+      []
+    ),
   };
 };
 
