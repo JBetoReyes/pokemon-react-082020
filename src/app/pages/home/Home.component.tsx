@@ -8,6 +8,7 @@ import SearchBar from '@components/common/SearchBar.component';
 import cardFactory from '@components/common/Card';
 import { usePageRefresher } from '@hooks/usePageRefresher';
 import Carousel from '@components/common/Carousel.component';
+import heartIcon from '@assets/heart.png';
 import {
   addPokemonMyList,
   deletePokemonMyList,
@@ -83,7 +84,7 @@ const Home = (props: PropsFromRedux): JSX.Element => {
       <SearchBar title="Which is your favorite pokemon?" />
       {isMyListEmpty ? (
         <div className="empty-list-placeholder">
-          <img src="./assets/heart.png" alt="heart" />
+          <img src={heartIcon} alt="heart" />
           <div className="">Add your favorite pokemons.</div>
         </div>
       ) : null}

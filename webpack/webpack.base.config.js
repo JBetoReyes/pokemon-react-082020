@@ -26,8 +26,8 @@ module.exports = (env) => {
     entry: resolve(srcPath, 'app', 'index.tsx'),
     output: {
       filename: 'app-[hash:6].js',
-      path: resolve(srcPath, 'dist'),
-      publicPath: '/',
+      path: resolve(rootPath, 'dist'),
+      publicPath: '/dist/',
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -62,7 +62,7 @@ module.exports = (env) => {
           },
         },
         {
-          test: /\.(png|jpe?g|gif)$/i,
+          test: /\.(png|jpe?g|gif|svg)$/i,
           loader: 'file-loader',
         },
       ],

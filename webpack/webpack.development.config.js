@@ -4,6 +4,11 @@ const baseConfig = require('./webpack.base.config');
 
 module.exports = (env) => ({
   ...merge(baseConfig(env), {
+    output: {
+      filename: 'app-[hash:6].js',
+      path: resolve(rootPath, 'dist'),
+      publicPath: '/',
+    },
     mode: 'development',
     module: {
       rules: [

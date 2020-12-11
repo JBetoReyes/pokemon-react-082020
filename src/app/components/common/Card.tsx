@@ -9,6 +9,8 @@ import { upperFirst } from 'lodash';
 import { connect, ConnectedProps } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { History } from 'history';
+import plusIcon from '@assets/plus.png';
+import minusIcon from '@assets/minus.png';
 import {
   addPokemonMyList,
   deletePokemonMyList,
@@ -70,7 +72,7 @@ const CardFactory = <T extends Object>() => (props: Props<T>): JSX.Element => {
           {deleteActionHandler ? (
             <img
               className="card-item__details--icon"
-              src="./assets/minus.png"
+              src={minusIcon}
               alt="delete"
               onClick={() => deleteActionHandler(props.data as T)}
             />
@@ -78,7 +80,7 @@ const CardFactory = <T extends Object>() => (props: Props<T>): JSX.Element => {
           {props.data && addActionHandler ? (
             <img
               className="card-item__details--icon"
-              src="./assets/plus.svg"
+              src={plusIcon}
               alt="add"
               onClick={() => addActionHandler(props.data as T)}
             />
