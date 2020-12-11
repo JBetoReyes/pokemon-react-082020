@@ -27,7 +27,7 @@ module.exports = (env) => {
     output: {
       filename: 'app-[hash:6].js',
       path: resolve(rootPath, 'dist'),
-      publicPath: '/dist/',
+      publicPath: '/',
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
