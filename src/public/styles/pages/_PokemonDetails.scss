@@ -1,5 +1,4 @@
-@import '../utils/variables';
-@import '../utils/mixins';
+@import '../utils/Index';
 
 @each $name, $color in $pokemon-color {
     .border-#{$name} {
