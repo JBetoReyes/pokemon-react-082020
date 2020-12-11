@@ -1,4 +1,4 @@
-import React, { Validator } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect, ConnectedProps } from 'react-redux';
 import { AppSubmitEvent } from '@typings/htmlEvents';
