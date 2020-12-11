@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "start": "webpack-dev-server --env.ENVIRONMENT=development --config ./webpack/webpack.development.config.js",
-    "build": "webpack --env.ENVIRONMENT=production --config ./webpack/webpack.production.config.js",
+    "build": "ls src/public/styles/utils && webpack --env.ENVIRONMENT=production --config ./webpack/webpack.production.config.js",
     "test": "jest --config=./tests/jest.config.js",
     "prettier": "prettier --config ./.prettierrc --write ."
   },
