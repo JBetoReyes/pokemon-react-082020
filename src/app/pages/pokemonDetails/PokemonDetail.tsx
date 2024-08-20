@@ -12,7 +12,9 @@ const PokemonDetail = ({
   location,
 }: RouteComponentProps<RouteParams, any, IPokemon>): JSX.Element => {
   const Card = cardFactory<IPokemon>();
-  const pokemonsImageUrl = process.env.POKEMON_IMAGES_URL;
+  const pokemonsImageUrl =
+    process.env.POKEMON_IMAGES_URL ||
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/132.svg';
   const { number, name } = location.state;
   const [details] = usePokemonDetails(number);
   const toTitleCase = (name: string) => {
@@ -23,7 +25,7 @@ const PokemonDetail = ({
       <div className="data-container d-flex">
         <div className="mr-5">
           <img
-            src={`${pokemonsImageUrl}/${number}.png`}
+            src={pokemonsImageUrl?.replace('POKEMON_NUMBER', number)}
             alt="pokemonimage"
             className="data-container--img"
           />
