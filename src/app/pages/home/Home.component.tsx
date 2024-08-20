@@ -45,7 +45,9 @@ const Home = (props: PropsFromRedux): JSX.Element => {
     myListCarousel,
     searchResultsCarousel,
   } = props;
-  const pokemonsImageUrl = process.env.POKEMON_IMAGES_URL;
+  const pokemonsImageUrl =
+    process.env.POKEMON_IMAGES_URL ||
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/132.svg';
   const initialPage = localStorage.getItem('page')
     ? +(localStorage.getItem('page') as string)
     : 1;
@@ -74,7 +76,7 @@ const Home = (props: PropsFromRedux): JSX.Element => {
       detailLabel: 'Name',
       subDetail: number,
       subDetailLabel: 'Pokemon Number',
-      url: `${pokemonsImageUrl}/${number}.png`,
+      url: pokemonsImageUrl?.replace('POKEMON_NUMBER', number),
       ref: null,
       data: pokemon,
     };
